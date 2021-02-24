@@ -132,8 +132,7 @@ public abstract class MappableBlockLoader {
   protected void verifyChecksum(long length, FileInputStream metaIn,
       FileChannel blockChannel, String blockFileName) throws IOException {
     // Verify the checksum from the block's meta file
-    // Get the DataChecksum from the
-    // meta file header
+    // Get the DataChecksum from the meta file header
     BlockMetadataHeader header =
         BlockMetadataHeader.readHeader(new DataInputStream(
             new BufferedInputStream(metaIn, BlockMetadataHeader

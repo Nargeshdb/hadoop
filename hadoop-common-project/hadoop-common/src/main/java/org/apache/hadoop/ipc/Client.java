@@ -1886,8 +1886,7 @@ public class Client implements AutoCloseable {
         if (length == -1) {
           in.readInt(); // ignore fatal/error status, it's fatal for us.
           throw new RemoteException(WritableUtils.readString(in),
-                                    WritableUtils.readString
-                                            (in));
+                                    WritableUtils.readString(in));
         }
       }
       if (length <= 0) {

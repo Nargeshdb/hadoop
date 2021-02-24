@@ -17,17 +17,22 @@
  */
 package org.apache.hadoop.hdfs.util;
 
-import com.google.common.io.Files;
-import com.google.common.primitives.Longs;
+import java.io.Closeable;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+
 import org.apache.hadoop.classification.InterfaceAudience;
 import org.apache.hadoop.io.IOUtils;
+
+import com.google.common.io.Files;
+import com.google.common.primitives.Longs;
 import org.checkerframework.checker.calledmethods.qual.EnsuresCalledMethods;
 import org.checkerframework.checker.mustcall.qual.ResetMustCall;
 import org.checkerframework.checker.objectconstruction.qual.Owning;
-
-import java.io.*;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
 
 /**
  * Class that represents a file on disk which stores a single <code>long</code>

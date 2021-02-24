@@ -18,19 +18,24 @@
 
 package org.apache.hadoop.hdfs.server.namenode;
 
-import com.google.common.annotations.VisibleForTesting;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+
+import org.checkerframework.checker.calledmethods.qual.EnsuresCalledMethods;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.classification.InterfaceAudience;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hdfs.DFSConfigKeys;
 import org.apache.hadoop.hdfs.protocol.LayoutFlags;
 import org.apache.hadoop.io.IOUtils;
-import org.checkerframework.checker.calledmethods.qual.EnsuresCalledMethods;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import java.io.*;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
+import com.google.common.annotations.VisibleForTesting;
 
 /**
  * An implementation of the abstract class {@link EditLogOutputStream}, which
@@ -87,7 +92,7 @@ public class EditLogFileOutputStream extends EditLogOutputStream {
     }
     fp = new FileOutputStream(rp.getFD()); // open for append
 
-     rp.getChannel();
+    fc = rp.getChannel();
     fc.position(fc.size());
   }
 

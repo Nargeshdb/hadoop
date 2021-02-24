@@ -106,7 +106,6 @@ final class FileDistributionCalculator {
         }
 
         in.getChannel().position(s.getOffset());
-
         InputStream is = FSImageUtil.wrapInputStreamForCompression(conf,
             summary.getCodec(), new BufferedInputStream(new LimitInputStream(
                 in, s.getLength())));

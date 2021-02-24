@@ -17,9 +17,13 @@
  */
 package org.apache.hadoop.hdfs.util;
 
-import org.apache.hadoop.classification.InterfaceAudience;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
-import java.util.*;
+import org.apache.hadoop.classification.InterfaceAudience;
 
 /**
  * A {@link ReadOnlyList} is a unmodifiable list,

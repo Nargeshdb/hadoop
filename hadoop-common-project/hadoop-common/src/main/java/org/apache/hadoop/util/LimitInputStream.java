@@ -19,15 +19,15 @@
 
 package org.apache.hadoop.util;
 
-import org.apache.hadoop.classification.InterfaceStability.Unstable;
-import org.checkerframework.checker.mustcall.qual.MustCallChoice;
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
+import org.apache.hadoop.classification.InterfaceStability.Unstable;
+import org.checkerframework.checker.mustcall.qual.MustCallChoice;
 
 /**
  * Copied from guava source code v15 (LimitedInputStream)

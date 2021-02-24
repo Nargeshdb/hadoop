@@ -17,15 +17,15 @@
  */
 package org.apache.hadoop.hdfs.tools.offlineImageViewer;
 
-import com.google.common.base.Charsets;
-import org.checkerframework.checker.calledmethods.qual.EnsuresCalledMethods;
-import org.checkerframework.checker.mustcall.qual.InheritableMustCall;
-import org.checkerframework.checker.objectconstruction.qual.Owning;
-
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
+import com.google.common.base.Charsets;
+import org.checkerframework.checker.calledmethods.qual.EnsuresCalledMethods;
+import org.checkerframework.checker.mustcall.qual.InheritableMustCall;
+import org.checkerframework.checker.objectconstruction.qual.Owning;
 
 /**
  * TextWriterImageProcessor mixes in the ability for ImageVisitor

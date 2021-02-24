@@ -17,6 +17,12 @@
  */
 package org.apache.hadoop.hdfs.server.datanode.fsdataset;
 
+import java.io.Closeable;
+import java.io.FileDescriptor;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.io.IOException;
+
 import org.apache.hadoop.hdfs.server.datanode.DataNode;
 import org.apache.hadoop.hdfs.server.datanode.FileIoProvider;
 import org.apache.hadoop.io.IOUtils;
@@ -27,8 +33,6 @@ import org.checkerframework.checker.mustcall.qual.MustCallChoice;
 import org.checkerframework.checker.objectconstruction.qual.NotOwning;
 import org.checkerframework.checker.objectconstruction.qual.Owning;
 import org.slf4j.Logger;
-
-import java.io.*;
 
 /**
  * Contains the output streams for the data and checksum of a replica.

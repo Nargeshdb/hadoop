@@ -128,7 +128,7 @@ public class SecureDataNodeStarter implements Daemon {
         CommonConfigurationKeysPublic.IPC_SERVER_LISTEN_QUEUE_SIZE_KEY,
         CommonConfigurationKeysPublic.IPC_SERVER_LISTEN_QUEUE_SIZE_DEFAULT);
     ServerSocket ss = (socketWriteTimeout > 0) ?
-            ServerSocketChannel.open().socket() : new ServerSocket();
+        ServerSocketChannel.open().socket() : new ServerSocket();
 
     try {
       ss.bind(streamingAddr, backlogLength);
@@ -156,8 +156,7 @@ public class SecureDataNodeStarter implements Daemon {
       httpChannel = ServerSocketChannel.open();
       InetSocketAddress infoSocAddr = DataNode.getInfoAddr(conf);
       try {
-        ServerSocket serverSocket = httpChannel.socket();
-        serverSocket.bind(infoSocAddr);
+        httpChannel.socket().bind(infoSocAddr);
       } catch (BindException e) {
         BindException newBe = appendMessageToBindException(e,
             infoSocAddr.toString());

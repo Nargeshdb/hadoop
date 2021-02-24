@@ -17,7 +17,14 @@
  */
 package org.apache.hadoop.hdfs.server.common;
 
-import com.google.common.base.Joiner;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.util.Map;
+import java.util.Properties;
+import java.util.SortedSet;
+
 import org.apache.hadoop.classification.InterfaceAudience;
 import org.apache.hadoop.hdfs.protocol.LayoutVersion;
 import org.apache.hadoop.hdfs.protocol.LayoutVersion.Feature;
@@ -27,13 +34,7 @@ import org.apache.hadoop.hdfs.server.common.Storage.StorageDirectory;
 import org.apache.hadoop.hdfs.server.datanode.DataNodeLayoutVersion;
 import org.apache.hadoop.hdfs.server.namenode.NameNodeLayoutVersion;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.RandomAccessFile;
-import java.util.Map;
-import java.util.Properties;
-import java.util.SortedSet;
+import com.google.common.base.Joiner;
 
 /**
  * Common class for storage information.

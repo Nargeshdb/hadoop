@@ -17,13 +17,18 @@
  */
 package org.apache.hadoop.hdfs.util;
 
-import com.google.common.base.Charsets;
-import org.apache.hadoop.classification.InterfaceAudience;
-import org.apache.hadoop.io.IOUtils;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.apache.hadoop.classification.InterfaceAudience;
+import org.apache.hadoop.io.IOUtils;
 
-import java.io.*;
+import com.google.common.base.Charsets;
 
 /**
  * Class that represents a file on disk which persistently stores

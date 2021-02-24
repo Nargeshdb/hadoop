@@ -17,14 +17,31 @@
  */
 package org.apache.hadoop.hdfs.server.namenode;
 
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.hadoop.hdfs.server.aliasmap.InMemoryAliasMap;
+import org.checkerframework.checker.objectconstruction.qual.Owning;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.hadoop.classification.InterfaceAudience;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileUtil;
 import org.apache.hadoop.hdfs.DFSConfigKeys;
 import org.apache.hadoop.hdfs.HdfsConfiguration;
-import org.apache.hadoop.hdfs.server.aliasmap.InMemoryAliasMap;
 import org.apache.hadoop.hdfs.server.common.HttpPutFailedException;
 import org.apache.hadoop.hdfs.server.common.Storage;
 import org.apache.hadoop.hdfs.server.common.Storage.StorageDirectory;
@@ -40,21 +57,10 @@ import org.apache.hadoop.security.UserGroupInformation;
 import org.apache.hadoop.security.authentication.client.AuthenticationException;
 import org.apache.hadoop.util.Time;
 import org.apache.http.client.utils.URIBuilder;
-import org.checkerframework.checker.objectconstruction.qual.Owning;
-import org.eclipse.jetty.io.EofException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import org.eclipse.jetty.io.EofException;
 
 import static org.apache.hadoop.hdfs.server.common.Util.IO_FILE_BUFFER_SIZE;
 import static org.apache.hadoop.hdfs.server.common.Util.connectionFactory;
@@ -346,7 +352,7 @@ public class TransferFsImage {
    * Copies the contents of the local file into the output stream.
    */
   public static void copyFileToStream(@Owning OutputStream out, File localfile,
-                                      FileInputStream infile, DataTransferThrottler throttler)
+      FileInputStream infile, DataTransferThrottler throttler)
     throws IOException {
     copyFileToStream(out, localfile, infile, throttler, null);
   }
