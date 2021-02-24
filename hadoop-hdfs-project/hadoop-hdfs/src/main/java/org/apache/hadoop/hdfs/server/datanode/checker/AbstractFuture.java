@@ -813,7 +813,7 @@ public abstract class AbstractFuture<V> implements ListenableFuture<V> {
    * <p>
    * <p>This is approximately the inverse of {@link #getDoneValue(Object)}
    */
-  @SuppressWarnings("mustcall:assignment.type.incompatible")
+  @SuppressWarnings("mustcall:return.type.incompatible")
   private static Object getFutureValue(ListenableFuture<?> future) {
     Object valueToSet;
     if (future instanceof TrustedFuture) {

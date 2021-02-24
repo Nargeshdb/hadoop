@@ -146,6 +146,7 @@ public class Journal implements Closeable {
    */
   private static final int WARN_SYNC_MILLIS_THRESHOLD = 1000;
 
+  @SuppressWarnings("objectconstruction:reset.not.owning")
   Journal(Configuration conf, File logDir, String journalId,
       StartupOption startOpt, StorageErrorReporter errorReporter)
       throws IOException {
@@ -189,8 +190,7 @@ public class Journal implements Closeable {
    * when we first load the Journal, but also after any formatting
    * operation, since the cached data is no longer relevant.
    */
-  @SuppressWarnings({"objectconstruction:missing.reset.mustcall", "objectconstruction:incompatible.reset.mustcall"})
-  @ResetMustCall("this.committedTxnId")
+  @ResetMustCall("this")
   private synchronized void refreshCachedData() {
     IOUtils.closeStream(committedTxnId);
     
@@ -240,6 +240,7 @@ public class Journal implements Closeable {
   /**
    * Format the local storage with the given namespace.
    */
+  @ResetMustCall("this")
   void format(NamespaceInfo nsInfo, boolean force) throws IOException {
     Preconditions.checkState(nsInfo.getNamespaceID() != 0,
         "can't format with uninitialized namespace info: %s",

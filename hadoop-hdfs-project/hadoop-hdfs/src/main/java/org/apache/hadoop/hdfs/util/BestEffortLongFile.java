@@ -56,12 +56,14 @@ public class BestEffortLongFile implements Closeable {
     this.file = file;
     this.defaultVal = defaultVal;
   }
-  
+
+  @ResetMustCall("this")
   public long get() throws IOException {
     lazyOpen();
     return value;
   }
 
+  @ResetMustCall("this")
   public void set(long newVal) throws IOException {
     lazyOpen();
     buf.clear();
@@ -71,8 +73,8 @@ public class BestEffortLongFile implements Closeable {
     value = newVal;
   }
 
-  @SuppressWarnings({"objectconstruction:incompatible.reset.mustcall", "objectconstruction:required.method.not.called"}) //FP: overwrite ch only if it's null
-  @ResetMustCall("this.ch")
+  @SuppressWarnings({"objectconstruction:required.method.not.called"}) //FP: overwrite ch only if it's null
+  @ResetMustCall("this")
   private void lazyOpen() throws IOException {
     if (ch != null) {
       return;
