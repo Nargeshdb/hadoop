@@ -25,7 +25,7 @@ import java.io.OutputStream;
 import org.apache.hadoop.classification.InterfaceAudience;
 import org.apache.hadoop.classification.InterfaceStability;
 import org.apache.hadoop.conf.Configuration;
-import org.checkerframework.checker.mustcall.qual.MustCallChoice;
+import org.checkerframework.checker.mustcall.qual.MustCallAlias;
 
 /**
  * This class encapsulates a streaming compression/decompression pair.
@@ -43,7 +43,7 @@ public interface CompressionCodec {
    * @throws IOException
    */
   @SuppressWarnings("mustcall")
-  @MustCallChoice CompressionOutputStream createOutputStream(@MustCallChoice OutputStream out)
+  @MustCallAlias CompressionOutputStream createOutputStream(@MustCallAlias OutputStream out)
   throws IOException;
   
   /**
@@ -56,7 +56,7 @@ public interface CompressionCodec {
    * @throws IOException
    */
   @SuppressWarnings("mustcall")
-  @MustCallChoice CompressionOutputStream createOutputStream(@MustCallChoice OutputStream out,
+  @MustCallAlias CompressionOutputStream createOutputStream(@MustCallAlias OutputStream out,
                                              Compressor compressor) 
   throws IOException;
 
@@ -83,7 +83,7 @@ public interface CompressionCodec {
    * @throws IOException
    */
   @SuppressWarnings("mustcall")
-  @MustCallChoice CompressionInputStream createInputStream(@MustCallChoice InputStream in) throws IOException;
+  @MustCallAlias CompressionInputStream createInputStream(@MustCallAlias InputStream in) throws IOException;
   
   /**
    * Create a {@link CompressionInputStream} that will read from the given 
@@ -95,7 +95,7 @@ public interface CompressionCodec {
    * @throws IOException
    */
   @SuppressWarnings("mustcall")
-  @MustCallChoice CompressionInputStream createInputStream(@MustCallChoice InputStream in,
+  @MustCallAlias CompressionInputStream createInputStream(@MustCallAlias InputStream in,
                                            Decompressor decompressor) 
   throws IOException;
 
@@ -131,8 +131,8 @@ public interface CompressionCodec {
      * @throws IOException
      */
     @SuppressWarnings("mustcall")
-    static @MustCallChoice CompressionOutputStream createOutputStreamWithCodecPool(
-        CompressionCodec codec, Configuration conf, @MustCallChoice OutputStream out)
+    static @MustCallAlias CompressionOutputStream createOutputStreamWithCodecPool(
+        CompressionCodec codec, Configuration conf, @MustCallAlias OutputStream out)
         throws IOException {
       Compressor compressor = CodecPool.getCompressor(codec, conf);
       CompressionOutputStream stream = null;
@@ -158,8 +158,8 @@ public interface CompressionCodec {
      * @throws IOException
      */
     @SuppressWarnings("mustcall")
-    static @MustCallChoice CompressionInputStream createInputStreamWithCodecPool(
-        CompressionCodec codec,  Configuration conf, @MustCallChoice InputStream in)
+    static @MustCallAlias CompressionInputStream createInputStreamWithCodecPool(
+        CompressionCodec codec,  Configuration conf, @MustCallAlias InputStream in)
           throws IOException {
       Decompressor decompressor = CodecPool.getDecompressor(codec);
       CompressionInputStream stream = null;

@@ -27,7 +27,7 @@ import java.util.EnumMap;
 import java.util.EnumSet;
 import java.util.List;
 
-import org.checkerframework.checker.mustcall.qual.MustCallChoice;
+import org.checkerframework.checker.mustcall.qual.MustCallAlias;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.hadoop.classification.InterfaceAudience;
@@ -1343,7 +1343,7 @@ public class FSEditLogLoader {
     private long markPos = -1;
     private long limitPos = Long.MAX_VALUE;
 
-    @MustCallChoice public PositionTrackingInputStream(@MustCallChoice InputStream is) {
+    @MustCallAlias public PositionTrackingInputStream(@MustCallAlias InputStream is) {
       super(is);
     }
 

@@ -149,7 +149,7 @@ public class EditLogFileInputStream extends EditLogInputStream {
     this.maxOpSize = DFSConfigKeys.DFS_NAMENODE_MAX_OP_SIZE_DEFAULT;
   }
 
-  @SuppressWarnings({"objectconstruction:missing.reset.mustcall", "objectconstruction:required.method.not.called"}) //TP: no null check before assigning a new value to dataIn or tracker
+  @SuppressWarnings({"objectconstruction:missing.create.obligation", "objectconstruction:required.method.not.called"}) //TP: no null check before assigning a new value to dataIn or tracker
   private void init(boolean verifyLayoutVersion)
       throws LogHeaderCorruptException, IOException {
     Preconditions.checkState(state == State.UNINIT);

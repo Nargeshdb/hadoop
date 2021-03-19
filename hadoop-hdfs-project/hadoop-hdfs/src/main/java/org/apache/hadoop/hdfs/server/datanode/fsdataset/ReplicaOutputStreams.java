@@ -29,7 +29,7 @@ import org.apache.hadoop.io.IOUtils;
 import org.apache.hadoop.io.nativeio.NativeIOException;
 import org.apache.hadoop.util.DataChecksum;
 import org.checkerframework.checker.calledmethods.qual.EnsuresCalledMethods;
-import org.checkerframework.checker.mustcall.qual.MustCallChoice;
+import org.checkerframework.checker.mustcall.qual.MustCallAlias;
 import org.checkerframework.checker.objectconstruction.qual.NotOwning;
 import org.checkerframework.checker.objectconstruction.qual.Owning;
 import org.slf4j.Logger;
@@ -54,7 +54,7 @@ public class ReplicaOutputStreams implements Closeable {
    * and a checksum.
    */
   @SuppressWarnings({"mustcall:assignment.type.incompatible","objectconstruction:required.method.not.called"}) //FP: we should define tempvar for TypeCastNode
-  @MustCallChoice public ReplicaOutputStreams(@Owning OutputStream dataOut, @MustCallChoice OutputStream checksumOut, DataChecksum checksum,
+  @MustCallAlias public ReplicaOutputStreams(@Owning OutputStream dataOut, @MustCallAlias OutputStream checksumOut, DataChecksum checksum,
                               FsVolumeSpi volume, FileIoProvider fileIoProvider) {
 
     this.dataOut = dataOut;

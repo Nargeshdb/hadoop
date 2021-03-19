@@ -31,7 +31,7 @@ import org.apache.hadoop.io.IOUtils;
 import com.google.common.io.Files;
 import com.google.common.primitives.Longs;
 import org.checkerframework.checker.calledmethods.qual.EnsuresCalledMethods;
-import org.checkerframework.checker.mustcall.qual.ResetMustCall;
+import org.checkerframework.checker.mustcall.qual.CreatesObligation;
 import org.checkerframework.checker.objectconstruction.qual.Owning;
 
 /**
@@ -62,13 +62,13 @@ public class BestEffortLongFile implements Closeable {
     this.defaultVal = defaultVal;
   }
 
-  @ResetMustCall("this")
+  @CreatesObligation("this")
   public long get() throws IOException {
     lazyOpen();
     return value;
   }
 
-  @ResetMustCall("this")
+  @CreatesObligation("this")
   public void set(long newVal) throws IOException {
     lazyOpen();
     buf.clear();
@@ -79,7 +79,7 @@ public class BestEffortLongFile implements Closeable {
   }
 
   @SuppressWarnings({"objectconstruction:required.method.not.called"}) //FP: overwrite ch only if it's null
-  @ResetMustCall("this")
+  @CreatesObligation("this")
   private void lazyOpen() throws IOException {
     if (ch != null) {
       return;

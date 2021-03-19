@@ -35,7 +35,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang3.Range;
 import org.checkerframework.checker.calledmethods.qual.EnsuresCalledMethods;
-import org.checkerframework.checker.mustcall.qual.ResetMustCall;
+import org.checkerframework.checker.mustcall.qual.CreatesObligation;
 import org.checkerframework.checker.objectconstruction.qual.Owning;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -203,7 +203,7 @@ public class Journal implements Closeable {
    * when we first load the Journal, but also after any formatting
    * operation, since the cached data is no longer relevant.
    */
-  @ResetMustCall("this")
+  @CreatesObligation("this")
   private synchronized void refreshCachedData() {
     IOUtils.closeStream(committedTxnId);
     
@@ -253,7 +253,7 @@ public class Journal implements Closeable {
   /**
    * Format the local storage with the given namespace.
    */
-  @ResetMustCall("this")
+  @CreatesObligation("this")
   void format(NamespaceInfo nsInfo, boolean force) throws IOException {
     Preconditions.checkState(nsInfo.getNamespaceID() != 0,
         "can't format with uninitialized namespace info: %s",
@@ -1124,7 +1124,7 @@ public class Journal implements Closeable {
     storage.getJournalManager().doPreUpgrade();
   }
 
-  @SuppressWarnings("objectconstruction:missing.reset.mustcall")
+  @SuppressWarnings("objectconstruction:missing.create.obligation")
   public synchronized void doUpgrade(StorageInfo sInfo) throws IOException {
     long oldCTime = storage.getCTime();
     storage.cTime = sInfo.cTime;

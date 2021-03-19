@@ -52,7 +52,7 @@ import org.apache.hadoop.io.MultipleIOException;
 import org.apache.hadoop.io.compress.CompressionCodec;
 import org.apache.hadoop.io.compress.CompressionCodecFactory;
 import org.checkerframework.checker.calledmethods.qual.EnsuresCalledMethods;
-import org.checkerframework.checker.mustcall.qual.MustCallChoice;
+import org.checkerframework.checker.mustcall.qual.MustCallAlias;
 import org.checkerframework.checker.objectconstruction.qual.Owning;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -442,7 +442,7 @@ public class TextFileRegionAliasMap
     private final String delim;
     private final @Owning java.io.Writer out;
 
-    @MustCallChoice public TextWriter(@MustCallChoice java.io.Writer out, String delim) {
+    @MustCallAlias public TextWriter(@MustCallAlias java.io.Writer out, String delim) {
       this.out = out;
       this.delim = delim;
     }

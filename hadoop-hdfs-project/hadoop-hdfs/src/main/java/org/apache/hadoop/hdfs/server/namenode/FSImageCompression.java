@@ -33,7 +33,7 @@ import org.apache.hadoop.hdfs.DFSConfigKeys;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.compress.CompressionCodec;
 import org.apache.hadoop.io.compress.CompressionCodecFactory;
-import org.checkerframework.checker.mustcall.qual.MustCallChoice;
+import org.checkerframework.checker.mustcall.qual.MustCallAlias;
 
 /**
  * Simple container class that handles support for compressed fsimage files.
@@ -134,7 +134,7 @@ public class FSImageCompression {
    * error occurs.
    */
   @SuppressWarnings("objectconstruction:required.method.not.called") //FP: if IOException happens is should be closed in caller method
-  @MustCallChoice DataInputStream unwrapInputStream(@MustCallChoice InputStream is) throws IOException {
+  @MustCallAlias DataInputStream unwrapInputStream(@MustCallAlias InputStream is) throws IOException {
     if (imageCodec != null) {
       return new DataInputStream(imageCodec.createInputStream(is));
     } else {
@@ -156,7 +156,7 @@ public class FSImageCompression {
    * instantiated
    */
   @SuppressWarnings("objectconstruction:required.method.not.called") //FP: if IOException happens is should be closed in caller method
-  @MustCallChoice DataOutputStream writeHeaderAndWrapStream(@MustCallChoice OutputStream os)
+  @MustCallAlias DataOutputStream writeHeaderAndWrapStream(@MustCallAlias OutputStream os)
   throws IOException {
     DataOutputStream dos = new DataOutputStream(os);
 

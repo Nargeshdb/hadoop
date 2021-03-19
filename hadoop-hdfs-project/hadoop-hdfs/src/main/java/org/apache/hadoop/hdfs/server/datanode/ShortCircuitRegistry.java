@@ -33,7 +33,7 @@ import java.util.Set;
 import com.google.common.annotations.VisibleForTesting;
 import org.apache.commons.io.IOUtils;
 import org.checkerframework.checker.calledmethods.qual.EnsuresCalledMethods;
-import org.checkerframework.checker.mustcall.qual.MustCallChoice;
+import org.checkerframework.checker.mustcall.qual.MustCallAlias;
 import org.checkerframework.checker.objectconstruction.qual.NotOwning;
 import org.checkerframework.checker.objectconstruction.qual.Owning;
 import org.slf4j.Logger;
@@ -272,7 +272,7 @@ public class ShortCircuitRegistry {
     private final ShmId shmId;
     private final @Owning FileInputStream stream;
 
-    @MustCallChoice NewShmInfo(ShmId shmId, @MustCallChoice FileInputStream stream) {
+    @MustCallAlias NewShmInfo(ShmId shmId, @MustCallAlias FileInputStream stream) {
       this.shmId = shmId;
       this.stream = stream;
     }

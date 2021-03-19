@@ -56,7 +56,7 @@ import org.apache.hadoop.security.SecurityUtil;
 import org.apache.hadoop.util.ReflectionUtils;
 
 import com.google.common.base.Preconditions;
-import org.checkerframework.checker.mustcall.qual.MustCallChoice;
+import org.checkerframework.checker.mustcall.qual.MustCallAlias;
 import org.checkerframework.checker.objectconstruction.qual.NotOwning;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -471,7 +471,7 @@ public class NetUtils {
    * @throws IOException   
    */
   @SuppressWarnings("mustcall")
-  @MustCallChoice public static OutputStream getOutputStream(@MustCallChoice Socket socket, long timeout)
+  @MustCallAlias public static OutputStream getOutputStream(@MustCallAlias Socket socket, long timeout)
                                              throws IOException {
     return (socket.getChannel() == null) ? 
             socket.getOutputStream() : new SocketOutputStream(socket, timeout);            
