@@ -26,6 +26,7 @@ import org.apache.hadoop.classification.InterfaceStability;
 import org.apache.hadoop.fs.PositionedReadable;
 import org.apache.hadoop.fs.Seekable;
 import org.checkerframework.checker.calledmethods.qual.EnsuresCalledMethods;
+import org.checkerframework.checker.mustcall.qual.MustCallAlias;
 import org.checkerframework.checker.objectconstruction.qual.Owning;
 
 /**
@@ -53,7 +54,7 @@ public abstract class CompressionInputStream extends InputStream implements Seek
    * @param in The input stream to be compressed.
    * @throws IOException
    */
-  protected CompressionInputStream(@Owning InputStream in) throws IOException {
+  protected @MustCallAlias CompressionInputStream(@MustCallAlias InputStream in) throws IOException {
     if (!(in instanceof Seekable) || !(in instanceof PositionedReadable)) {
         this.maxAvailableData = in.available();
     }

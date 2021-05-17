@@ -33,6 +33,7 @@ import javax.security.sasl.SaslServer;
 import org.apache.hadoop.classification.InterfaceAudience;
 import org.apache.hadoop.classification.InterfaceStability;
 import org.checkerframework.checker.calledmethods.qual.EnsuresCalledMethods;
+import org.checkerframework.checker.mustcall.qual.MustCallAlias;
 import org.checkerframework.checker.objectconstruction.qual.Owning;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -152,7 +153,7 @@ public class SaslInputStream extends InputStream implements ReadableByteChannel 
    * @param saslServer
    *          an initialized SaslServer object
    */
-  public SaslInputStream(InputStream inStream, SaslServer saslServer) {
+  public @MustCallAlias SaslInputStream(@MustCallAlias InputStream inStream, SaslServer saslServer) {
     this.inStream = new DataInputStream(inStream);
     this.saslServer = saslServer;
     this.saslClient = null;
@@ -170,7 +171,7 @@ public class SaslInputStream extends InputStream implements ReadableByteChannel 
    * @param saslClient
    *          an initialized SaslClient object
    */
-  public SaslInputStream(InputStream inStream, SaslClient saslClient) {
+  public @MustCallAlias SaslInputStream(@MustCallAlias InputStream inStream, SaslClient saslClient) {
     this.inStream = new DataInputStream(inStream);
     this.saslServer = null;
     this.saslClient = saslClient;

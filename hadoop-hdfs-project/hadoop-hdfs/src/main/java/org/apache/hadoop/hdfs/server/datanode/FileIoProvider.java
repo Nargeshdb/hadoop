@@ -397,7 +397,7 @@ public class FileIoProvider {
    * @param fd  File descriptor object.
    * @return  FileOutputStream to the given file object.
    */
-  @MustCallAlias public FileOutputStream getFileOutputStream(
+  public @MustCallAlias FileOutputStream getFileOutputStream(
       @Nullable FsVolumeSpi volume, @MustCallAlias FileDescriptor fd) {
     return new WrappedFileOutputStream(volume, fd);
   }
@@ -904,7 +904,7 @@ public class FileIoProvider {
     /**
      * {@inheritDoc}.
      */
-    @MustCallAlias private WrappedFileOutputStream(
+    private @MustCallAlias WrappedFileOutputStream(
         @Nullable FsVolumeSpi volume,@MustCallAlias FileDescriptor fd) {
       super(fd);
       this.volume = volume;

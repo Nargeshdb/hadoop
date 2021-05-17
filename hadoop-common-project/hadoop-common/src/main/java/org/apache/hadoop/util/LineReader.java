@@ -26,6 +26,8 @@ import org.apache.hadoop.classification.InterfaceAudience;
 import org.apache.hadoop.classification.InterfaceStability;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.io.Text;
+import org.checkerframework.checker.calledmethods.qual.EnsuresCalledMethods;
+import org.checkerframework.checker.mustcall.qual.MustCallAlias;
 import org.checkerframework.checker.objectconstruction.qual.Owning;
 
 import static org.apache.hadoop.fs.CommonConfigurationKeysPublic.IO_FILE_BUFFER_SIZE_KEY;
@@ -74,7 +76,7 @@ public class LineReader implements Closeable {
    * @param in The input stream
    * @param bufferSize Size of the read buffer
    */
-  public LineReader(@Owning InputStream in, int bufferSize) {
+  public @MustCallAlias LineReader(@MustCallAlias InputStream in, int bufferSize) {
     this.in = in;
     this.bufferSize = bufferSize;
     this.buffer = new byte[this.bufferSize];
@@ -146,6 +148,7 @@ public class LineReader implements Closeable {
    * Close the underlying stream.
    * @throws IOException
    */
+  @EnsuresCalledMethods(value = "this.in", methods = "close")
   public void close() throws IOException {
     in.close();
   }

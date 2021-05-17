@@ -4538,7 +4538,7 @@ public class FSNamesystem implements Namesystem, FSNamesystemMBean,
     }
   }
 
-  @NotOwning public FSImage getFSImage() {
+  public FSImage getFSImage() {
     return fsImage;
   }
 
@@ -6641,7 +6641,6 @@ public class FSNamesystem implements Namesystem, FSNamesystemMBean,
 
   /** @return the FSDirectory. */
   @Override
-  @NotOwning
   public FSDirectory getFSDirectory() {
     return dir;
   }

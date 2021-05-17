@@ -57,7 +57,6 @@ import org.apache.hadoop.util.ReflectionUtils;
 
 import com.google.common.base.Preconditions;
 import org.checkerframework.checker.mustcall.qual.MustCallAlias;
-import org.checkerframework.checker.objectconstruction.qual.NotOwning;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -390,7 +389,7 @@ public class NetUtils {
    * 
    * @see #getInputStream(Socket, long)
    */
-  @NotOwning public static SocketInputWrapper getInputStream(Socket socket)
+  public static @MustCallAlias SocketInputWrapper getInputStream(@MustCallAlias Socket socket)
                                            throws IOException {
     return getInputStream(socket, socket.getSoTimeout());
   }
@@ -416,7 +415,7 @@ public class NetUtils {
    * @return SocketInputWrapper for reading from the socket.
    * @throws IOException
    */
-  @NotOwning public static SocketInputWrapper getInputStream(Socket socket, long timeout)
+  public static @MustCallAlias SocketInputWrapper getInputStream(@MustCallAlias Socket socket, long timeout)
                                            throws IOException {
     InputStream stm = (socket.getChannel() == null) ? 
           socket.getInputStream() : new SocketInputStream(socket);

@@ -25,6 +25,7 @@ import java.io.InputStream;
 import com.google.common.annotations.VisibleForTesting;
 import org.apache.hadoop.classification.InterfaceAudience;
 import org.apache.hadoop.classification.InterfaceStability;
+import org.checkerframework.checker.mustcall.qual.MustCallAlias;
 import org.checkerframework.checker.objectconstruction.qual.Owning;
 
 @InterfaceAudience.Public
@@ -50,7 +51,7 @@ public class DecompressorStream extends CompressionInputStream {
   private int lastBytesSent = 0;
 
   @VisibleForTesting
-  DecompressorStream(@Owning InputStream in, Decompressor decompressor,
+  @MustCallAlias DecompressorStream(@MustCallAlias InputStream in, Decompressor decompressor,
                      int bufferSize, int skipBufferSize)
       throws IOException {
     super(in);
@@ -66,13 +67,13 @@ public class DecompressorStream extends CompressionInputStream {
     skipBytes = new byte[skipBufferSize];
   }
 
-  public DecompressorStream(@Owning InputStream in, Decompressor decompressor,
+  public @MustCallAlias DecompressorStream(@MustCallAlias InputStream in, Decompressor decompressor,
                             int bufferSize)
       throws IOException {
     this(in, decompressor, bufferSize, MAX_SKIP_BUFFER_SIZE);
   }
 
-  public DecompressorStream(@Owning InputStream in, Decompressor decompressor)
+  public @MustCallAlias DecompressorStream(@MustCallAlias InputStream in, Decompressor decompressor)
       throws IOException {
     this(in, decompressor, MAX_INPUT_BUFFER_SIZE);
   }
@@ -83,7 +84,7 @@ public class DecompressorStream extends CompressionInputStream {
    * @param in Underlying input stream.
    * @throws IOException
    */
-  protected DecompressorStream(@Owning InputStream in) throws IOException {
+  protected @MustCallAlias DecompressorStream(@MustCallAlias InputStream in) throws IOException {
     super(in);
   }
 

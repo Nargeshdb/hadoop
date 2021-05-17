@@ -25,6 +25,7 @@ import io.netty.handler.codec.http.HttpContent;
 import io.netty.handler.codec.http.LastHttpContent;
 import org.checkerframework.checker.calledmethods.qual.EnsuresCalledMethods;
 import org.checkerframework.checker.mustcall.qual.MustCall;
+import org.checkerframework.checker.mustcall.qual.MustCallAlias;
 import org.checkerframework.checker.objectconstruction.qual.Owning;
 import org.slf4j.Logger;
 import org.apache.hadoop.hdfs.DFSClient;
@@ -43,7 +44,7 @@ class HdfsWriter extends SimpleChannelInboundHandler<HttpContent> {
   private final DefaultHttpResponse response;
   private static final Logger LOG = WebHdfsHandler.LOG;
 
-  HdfsWriter(@Owning DFSClient client, @Owning OutputStream out, DefaultHttpResponse response) {
+  @MustCallAlias HdfsWriter(@Owning DFSClient client, @MustCallAlias OutputStream out, DefaultHttpResponse response) {
     this.client = client;
     this.out = out;
     this.response = response;

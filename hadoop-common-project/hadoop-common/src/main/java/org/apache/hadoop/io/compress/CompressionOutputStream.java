@@ -24,6 +24,7 @@ import java.io.OutputStream;
 import org.apache.hadoop.classification.InterfaceAudience;
 import org.apache.hadoop.classification.InterfaceStability;
 import org.checkerframework.checker.calledmethods.qual.EnsuresCalledMethods;
+import org.checkerframework.checker.mustcall.qual.MustCallAlias;
 import org.checkerframework.checker.objectconstruction.qual.Owning;
 
 /**
@@ -48,7 +49,7 @@ public abstract class CompressionOutputStream extends OutputStream {
    * the compressed bytes to the given stream.
    * @param out
    */
-  protected CompressionOutputStream(OutputStream out) {
+  protected @MustCallAlias CompressionOutputStream(@MustCallAlias OutputStream out) {
     this.out = out;
   }
 

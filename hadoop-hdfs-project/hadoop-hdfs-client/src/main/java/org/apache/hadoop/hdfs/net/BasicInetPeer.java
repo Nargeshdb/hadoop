@@ -25,6 +25,7 @@ import java.net.SocketAddress;
 import java.nio.channels.ReadableByteChannel;
 
 import org.apache.hadoop.net.unix.DomainSocket;
+import org.checkerframework.checker.mustcall.qual.MustCallAlias;
 import org.checkerframework.checker.objectconstruction.qual.Owning;
 
 /**
@@ -33,12 +34,12 @@ import org.checkerframework.checker.objectconstruction.qual.Owning;
  *
  */
 public class BasicInetPeer implements Peer {
-  private final Socket socket;
+  private final @Owning Socket socket;
   private final OutputStream out;
   private final InputStream in;
   private final boolean isLocal;
 
-  public BasicInetPeer(@Owning Socket socket) throws IOException {
+  public @MustCallAlias BasicInetPeer(@MustCallAlias Socket socket) throws IOException {
     this.socket = socket;
     this.out = socket.getOutputStream();
     this.in = socket.getInputStream();

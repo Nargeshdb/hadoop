@@ -67,6 +67,7 @@ import org.apache.hadoop.security.token.Token;
 import org.apache.hadoop.util.DataChecksum;
 import org.apache.hadoop.util.StopWatch;
 import org.apache.hadoop.util.Time;
+import org.checkerframework.checker.mustcall.qual.MustCall;
 import org.checkerframework.checker.objectconstruction.qual.NotOwning;
 import org.slf4j.Logger;
 

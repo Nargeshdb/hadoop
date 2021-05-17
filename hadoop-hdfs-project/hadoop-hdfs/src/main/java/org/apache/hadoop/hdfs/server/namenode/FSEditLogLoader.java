@@ -1343,7 +1343,7 @@ public class FSEditLogLoader {
     private long markPos = -1;
     private long limitPos = Long.MAX_VALUE;
 
-    @MustCallAlias public PositionTrackingInputStream(@MustCallAlias InputStream is) {
+    public @MustCallAlias PositionTrackingInputStream(@MustCallAlias InputStream is) {
       super(is);
     }
 

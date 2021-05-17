@@ -22,7 +22,6 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import org.checkerframework.checker.mustcall.qual.MustCall;
-import org.checkerframework.checker.objectconstruction.qual.NotOwning;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.hadoop.classification.InterfaceAudience;
@@ -92,7 +91,7 @@ public class JournalNode implements Tool, Configurable, JournalNodeMXBean {
    */
   private int resultCode = 0;
 
-  @NotOwning synchronized Journal getOrCreateJournal(String jid,
+  synchronized Journal getOrCreateJournal(String jid,
                                           String nameServiceId,
                                           StartupOption startOpt)
       throws IOException {
@@ -140,11 +139,11 @@ public class JournalNode implements Tool, Configurable, JournalNodeMXBean {
   }
 
   @VisibleForTesting
-  @NotOwning public Journal getOrCreateJournal(String jid) throws IOException {
+  public Journal getOrCreateJournal(String jid) throws IOException {
     return getOrCreateJournal(jid, null, StartupOption.REGULAR);
   }
 
-  @NotOwning public Journal getOrCreateJournal(String jid,
+  public Journal getOrCreateJournal(String jid,
                                     String nameServiceId)
       throws IOException {
     return getOrCreateJournal(jid, nameServiceId, StartupOption.REGULAR);

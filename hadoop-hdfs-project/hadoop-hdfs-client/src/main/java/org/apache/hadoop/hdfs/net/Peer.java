@@ -93,14 +93,14 @@ public interface Peer extends Closeable {
    *                       This InputStream will be valid until you close
    *                       this peer with Peer#close.
    */
-  @NotOwning InputStream getInputStream() throws IOException;
+  InputStream getInputStream() throws IOException;
 
   /**
    * @return               An OutputStream associated with the Peer.
    *                       This OutputStream will be valid until you close
    *                       this peer with Peer#close.
    */
-  @NotOwning OutputStream getOutputStream() throws IOException;
+  OutputStream getOutputStream() throws IOException;
 
   /**
    * @return               True if the peer resides on the same

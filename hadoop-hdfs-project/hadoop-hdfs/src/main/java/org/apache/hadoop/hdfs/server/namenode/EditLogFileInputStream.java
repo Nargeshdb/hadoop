@@ -30,6 +30,8 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.security.PrivilegedExceptionAction;
 
+import org.checkerframework.checker.calledmethods.qual.EnsuresCalledMethods;
+import org.checkerframework.checker.mustcall.qual.CreatesObligation;
 import org.checkerframework.checker.objectconstruction.qual.Owning;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -149,7 +151,8 @@ public class EditLogFileInputStream extends EditLogInputStream {
     this.maxOpSize = DFSConfigKeys.DFS_NAMENODE_MAX_OP_SIZE_DEFAULT;
   }
 
-  @SuppressWarnings({"objectconstruction:missing.create.obligation", "objectconstruction:required.method.not.called"}) //TP: no null check before assigning a new value to dataIn or tracker
+  @CreatesObligation("this")
+  @SuppressWarnings({"objectconstruction:required.method.not.called"}) //TP: no null check before assigning a new value to dataIn or tracker
   private void init(boolean verifyLayoutVersion)
       throws LogHeaderCorruptException, IOException {
     Preconditions.checkState(state == State.UNINIT);
@@ -306,6 +309,7 @@ public class EditLogFileInputStream extends EditLogInputStream {
   }
 
   @Override
+  @EnsuresCalledMethods(value = "dataIn", methods = "close")
   public void close() throws IOException {
     if (state == State.OPEN) {
       dataIn.close();

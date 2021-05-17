@@ -32,6 +32,7 @@ import javax.security.sasl.SaslServer;
 import org.apache.hadoop.classification.InterfaceAudience;
 import org.apache.hadoop.classification.InterfaceStability;
 import org.checkerframework.checker.calledmethods.qual.EnsuresCalledMethods;
+import org.checkerframework.checker.mustcall.qual.MustCallAlias;
 import org.checkerframework.checker.objectconstruction.qual.Owning;
 
 /**
@@ -64,7 +65,7 @@ public class SaslOutputStream extends OutputStream {
    * @param saslServer
    *          an initialized SaslServer object
    */
-  public SaslOutputStream(OutputStream outStream, SaslServer saslServer) {
+  public @MustCallAlias SaslOutputStream(@MustCallAlias OutputStream outStream, SaslServer saslServer) {
     this.saslServer = saslServer;
     this.saslClient = null;
     String qop = (String) saslServer.getNegotiatedProperty(Sasl.QOP);
@@ -86,7 +87,7 @@ public class SaslOutputStream extends OutputStream {
    * @param saslClient
    *          an initialized SaslClient object
    */
-  public SaslOutputStream(OutputStream outStream, SaslClient saslClient) {
+  public @MustCallAlias SaslOutputStream(@MustCallAlias OutputStream outStream, SaslClient saslClient) {
     this.saslServer = null;
     this.saslClient = saslClient;
     String qop = (String) saslClient.getNegotiatedProperty(Sasl.QOP);

@@ -56,6 +56,7 @@ import org.apache.hadoop.hdfs.server.datanode.DNConf;
 import org.apache.hadoop.security.SaslPropertiesResolver;
 import org.apache.hadoop.security.SecurityUtil;
 import org.apache.hadoop.security.UserGroupInformation;
+import org.checkerframework.checker.mustcall.qual.MustCallAlias;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -108,8 +109,8 @@ public class SaslDataTransferServer {
    * @return new pair of streams, wrapped after SASL negotiation
    * @throws IOException for any error
    */
-  public IOStreamPair receive(Peer peer, OutputStream underlyingOut,
-      InputStream underlyingIn, int xferPort, DatanodeID datanodeId)
+  public @MustCallAlias IOStreamPair receive(Peer peer, OutputStream underlyingOut,
+                              @MustCallAlias InputStream underlyingIn, int xferPort, DatanodeID datanodeId)
       throws IOException {
     if (dnConf.getEncryptDataTransfer()) {
       LOG.debug(

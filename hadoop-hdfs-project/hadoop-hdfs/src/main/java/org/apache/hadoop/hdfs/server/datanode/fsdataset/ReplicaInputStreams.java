@@ -29,6 +29,7 @@ import org.apache.hadoop.io.IOUtils;
 import org.apache.hadoop.io.nativeio.NativeIOException;
 import org.checkerframework.checker.calledmethods.qual.EnsuresCalledMethods;
 import org.checkerframework.checker.mustcall.qual.MustCall;
+import org.checkerframework.checker.mustcall.qual.MustCallAlias;
 import org.checkerframework.checker.objectconstruction.qual.NotOwning;
 import org.checkerframework.checker.objectconstruction.qual.Owning;
 import org.slf4j.Logger;
@@ -46,9 +47,8 @@ public class ReplicaInputStreams implements Closeable {
   private @MustCall("close") FileDescriptor dataInFd = null;
 
   /** Create an object with a data input stream and a checksum input stream. */
-  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: need to define temp var for type cast node
-  public ReplicaInputStreams(
-          @Owning InputStream dataStream, @Owning InputStream checksumStream,
+  public @MustCallAlias ReplicaInputStreams(
+          @MustCallAlias InputStream dataStream, @Owning InputStream checksumStream,
           FsVolumeReference volumeRef, FileIoProvider fileIoProvider) {
     this.volumeRef = volumeRef;
     this.fileIoProvider = fileIoProvider;

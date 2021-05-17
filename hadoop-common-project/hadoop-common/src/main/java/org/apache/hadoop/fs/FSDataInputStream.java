@@ -31,7 +31,7 @@ import org.apache.hadoop.classification.InterfaceAudience;
 import org.apache.hadoop.classification.InterfaceStability;
 import org.apache.hadoop.io.ByteBufferPool;
 import org.apache.hadoop.util.IdentityHashStore;
-import org.checkerframework.checker.objectconstruction.qual.Owning;
+import org.checkerframework.checker.mustcall.qual.MustCallAlias;
 
 /** Utility that wraps a {@link FSInputStream} in a {@link DataInputStream}
  * and buffers input through a {@link java.io.BufferedInputStream}. */
@@ -50,7 +50,7 @@ public class FSDataInputStream extends DataInputStream
     extendedReadBuffers
       = new IdentityHashStore<ByteBuffer, ByteBufferPool>(0);
 
-  public FSDataInputStream(@Owning InputStream in) {
+  public @MustCallAlias FSDataInputStream(@MustCallAlias InputStream in) {
     super(in);
     if( !(in instanceof Seekable) || !(in instanceof PositionedReadable) ) {
       throw new IllegalArgumentException(in.getClass().getCanonicalName() +

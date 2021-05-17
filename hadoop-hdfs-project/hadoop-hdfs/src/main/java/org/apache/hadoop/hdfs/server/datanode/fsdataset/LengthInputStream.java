@@ -34,7 +34,7 @@ public class LengthInputStream extends FilterInputStream {
    * @param in the underlying input stream.
    * @param length the length of the stream.
    */
-  @MustCallAlias public LengthInputStream(@MustCallAlias InputStream in, long length) {
+  public @MustCallAlias LengthInputStream(@MustCallAlias InputStream in, long length) {
     super(in);
     this.length = length;
   }
@@ -44,7 +44,7 @@ public class LengthInputStream extends FilterInputStream {
     return length;
   }
 
-  @MustCallAlias public InputStream getWrappedStream() {
+  public @MustCallAlias InputStream getWrappedStream() {
     return in;
   }
 }

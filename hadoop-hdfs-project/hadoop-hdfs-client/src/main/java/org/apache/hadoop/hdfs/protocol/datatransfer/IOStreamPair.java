@@ -36,7 +36,7 @@ public class IOStreamPair implements Closeable {
   public final @Owning InputStream in;
   public final @Owning OutputStream out;
 
-  public IOStreamPair(@Owning InputStream in,@Owning OutputStream out) {
+  public @MustCallAlias IOStreamPair(@MustCallAlias InputStream in,@Owning OutputStream out) {
     this.in = in;
     this.out = out;
   }

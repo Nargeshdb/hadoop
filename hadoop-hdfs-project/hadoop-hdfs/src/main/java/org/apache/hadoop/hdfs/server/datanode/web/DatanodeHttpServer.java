@@ -46,6 +46,7 @@ import org.apache.hadoop.net.NetUtils;
 import org.apache.hadoop.security.authorize.AccessControlList;
 import org.apache.hadoop.security.ssl.SSLFactory;
 import org.checkerframework.checker.calledmethods.qual.EnsuresCalledMethods;
+import org.checkerframework.checker.mustcall.qual.MustCallAlias;
 import org.checkerframework.checker.objectconstruction.qual.Owning;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -101,9 +102,9 @@ public class DatanodeHttpServer implements Closeable {
   private InetSocketAddress httpsAddress;
 
   @SuppressWarnings("objectconstruction:required.method.not.called") //TP: externalHttpChannel remains open in possible exceptional exit due to builder.build()
-  public DatanodeHttpServer(final Configuration conf,
+  public @MustCallAlias DatanodeHttpServer(final Configuration conf,
         final DataNode datanode,
-        @Owning final ServerSocketChannel externalHttpChannel)
+        @MustCallAlias final ServerSocketChannel externalHttpChannel)
         throws IOException {
     this.conf = conf;
 

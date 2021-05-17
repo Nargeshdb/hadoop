@@ -139,7 +139,7 @@ public class Journal implements Closeable {
   public static final String LAST_WRITER_EPOCH = "last-writer-epoch";
   private static final String COMMITTED_TXID_FILENAME = "committed-txid";
   
-  private final @Owning FileJournalManager fjm;
+  private final FileJournalManager fjm;
 
   private JournaledEditsCache cache;
 
@@ -1124,7 +1124,7 @@ public class Journal implements Closeable {
     storage.getJournalManager().doPreUpgrade();
   }
 
-  @SuppressWarnings("objectconstruction:missing.create.obligation")
+  @SuppressWarnings("objectconstruction:missing.creates.obligation")
   public synchronized void doUpgrade(StorageInfo sInfo) throws IOException {
     long oldCTime = storage.getCTime();
     storage.cTime = sInfo.cTime;

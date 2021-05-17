@@ -397,7 +397,6 @@ public class TextFileRegionAliasMap
     }
 
     @Override
-    @SuppressWarnings("objectconstruction:required.method.not.called") //FP: can't handle Map
     public void close() throws IOException {
       ArrayList<IOException> ex = new ArrayList<>();
       synchronized (iterators) {
@@ -442,7 +441,7 @@ public class TextFileRegionAliasMap
     private final String delim;
     private final @Owning java.io.Writer out;
 
-    @MustCallAlias public TextWriter(@MustCallAlias java.io.Writer out, String delim) {
+    public @MustCallAlias TextWriter(@MustCallAlias java.io.Writer out, String delim) {
       this.out = out;
       this.delim = delim;
     }
