@@ -31,7 +31,7 @@ import java.nio.file.Files;
 import java.security.PrivilegedExceptionAction;
 
 import org.checkerframework.checker.calledmethods.qual.EnsuresCalledMethods;
-import org.checkerframework.checker.mustcall.qual.CreatesObligation;
+import org.checkerframework.checker.objectconstruction.qual.NotOwning;
 import org.checkerframework.checker.objectconstruction.qual.Owning;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -72,8 +72,8 @@ public class EditLogFileInputStream extends EditLogInputStream {
   private State state = State.UNINIT;
   private int logVersion = 0;
   private FSEditLogOp.Reader reader = null;
-  private @Owning FSEditLogLoader.PositionTrackingInputStream tracker = null;
-  private @Owning DataInputStream dataIn = null;
+  private FSEditLogLoader.PositionTrackingInputStream tracker = null;
+  private DataInputStream dataIn = null;
   static final Logger LOG = LoggerFactory.getLogger(EditLogInputStream.class);
   
   /**
@@ -151,8 +151,6 @@ public class EditLogFileInputStream extends EditLogInputStream {
     this.maxOpSize = DFSConfigKeys.DFS_NAMENODE_MAX_OP_SIZE_DEFAULT;
   }
 
-  @CreatesObligation("this")
-  @SuppressWarnings({"objectconstruction:required.method.not.called"}) //TP: no null check before assigning a new value to dataIn or tracker
   private void init(boolean verifyLayoutVersion)
       throws LogHeaderCorruptException, IOException {
     Preconditions.checkState(state == State.UNINIT);
@@ -309,7 +307,6 @@ public class EditLogFileInputStream extends EditLogInputStream {
   }
 
   @Override
-  @EnsuresCalledMethods(value = "dataIn", methods = "close")
   public void close() throws IOException {
     if (state == State.OPEN) {
       dataIn.close();
@@ -406,7 +403,7 @@ public class EditLogFileInputStream extends EditLogInputStream {
   }
   
   private interface LogSource {
-    public InputStream getInputStream() throws IOException;
+    public @NotOwning InputStream getInputStream() throws IOException;
     public long length();
     public String getName();
   }

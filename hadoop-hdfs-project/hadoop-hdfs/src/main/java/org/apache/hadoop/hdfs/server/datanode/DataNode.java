@@ -971,6 +971,7 @@ public class DataNode extends ReconfigurableBase
    * for information related to the different configuration options and
    * Http Policy is decided.
    */
+  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: httpServerChannel is passed as a @MCA to DatanodeHttpServer
   private void startInfoServer()
     throws IOException {
     // SecureDataNodeStarter will bind the privileged port to the channel if

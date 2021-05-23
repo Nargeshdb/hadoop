@@ -67,7 +67,6 @@ import org.apache.hadoop.security.token.Token;
 import org.apache.hadoop.util.DataChecksum;
 import org.apache.hadoop.util.StopWatch;
 import org.apache.hadoop.util.Time;
-import org.checkerframework.checker.mustcall.qual.MustCall;
 import org.checkerframework.checker.objectconstruction.qual.NotOwning;
 import org.slf4j.Logger;
 
@@ -221,7 +220,6 @@ class DataXceiver extends Receiver implements Runnable {
    * Read/write data from/to the DataXceiverServer.
    */
   @Override
-  @SuppressWarnings("objectconstruction:required.method.not.called") //TP: input remains open in possible exceptional path
   public void run() {
     int opsProcessed = 0;
     Op op = null;

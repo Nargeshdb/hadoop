@@ -104,7 +104,7 @@ public class DatanodeHttpServer implements Closeable {
   @SuppressWarnings("objectconstruction:required.method.not.called") //TP: externalHttpChannel remains open in possible exceptional exit due to builder.build()
   public @MustCallAlias DatanodeHttpServer(final Configuration conf,
         final DataNode datanode,
-        @MustCallAlias final ServerSocketChannel externalHttpChannel)
+        final @MustCallAlias ServerSocketChannel externalHttpChannel)
         throws IOException {
     this.conf = conf;
 

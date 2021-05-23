@@ -189,6 +189,7 @@ import org.apache.hadoop.util.Progressable;
 import org.apache.hadoop.util.Time;
 import org.apache.htrace.core.TraceScope;
 import org.apache.htrace.core.Tracer;
+import org.checkerframework.checker.objectconstruction.qual.NotOwning;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -1429,9 +1430,9 @@ public class DFSClient implements java.io.Closeable, RemotePeerFactory,
    *
    * @see ClientProtocol#append(String, String, EnumSetWritable)
    */
-  public HdfsDataOutputStream append(final String src, final int buffersize,
-      EnumSet<CreateFlag> flag, final Progressable progress,
-      final FileSystem.Statistics statistics) throws IOException {
+  public @NotOwning HdfsDataOutputStream append(final String src, final int buffersize,
+                              EnumSet<CreateFlag> flag, final Progressable progress,
+                              final FileSystem.Statistics statistics) throws IOException {
     final DFSOutputStream out = append(src, buffersize, flag, null, progress);
     return createWrappedOutputStream(out, statistics, out.getInitialLen());
   }

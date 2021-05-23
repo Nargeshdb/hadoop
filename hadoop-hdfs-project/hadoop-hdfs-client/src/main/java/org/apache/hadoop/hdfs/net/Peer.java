@@ -24,6 +24,7 @@ import java.io.OutputStream;
 import java.nio.channels.ReadableByteChannel;
 import org.apache.hadoop.classification.InterfaceAudience;
 import org.apache.hadoop.net.unix.DomainSocket;
+import org.checkerframework.checker.mustcall.qual.MustCallAlias;
 import org.checkerframework.checker.objectconstruction.qual.NotOwning;
 
 /**
@@ -93,14 +94,14 @@ public interface Peer extends Closeable {
    *                       This InputStream will be valid until you close
    *                       this peer with Peer#close.
    */
-  InputStream getInputStream() throws IOException;
+  @MustCallAlias InputStream getInputStream() throws IOException;
 
   /**
    * @return               An OutputStream associated with the Peer.
    *                       This OutputStream will be valid until you close
    *                       this peer with Peer#close.
    */
-  OutputStream getOutputStream() throws IOException;
+  @MustCallAlias OutputStream getOutputStream() throws IOException;
 
   /**
    * @return               True if the peer resides on the same

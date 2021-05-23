@@ -825,8 +825,8 @@ public class FileIoProvider {
     /**
      * {@inheritDoc}.
      */
-    private WrappedFileInputStream(
-        @Nullable FsVolumeSpi volume, FileDescriptor fd) {
+    private @MustCallAlias WrappedFileInputStream(
+        @Nullable FsVolumeSpi volume, @MustCallAlias FileDescriptor fd) {
       super(fd);
       this.volume = volume;
     }
