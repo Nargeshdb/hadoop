@@ -234,12 +234,12 @@ https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <dependency>
       <groupId>net.sridharan.objectconstruction</groupId>
       <artifactId>object-construction-qual</artifactId>
-      <version>0.1.12</version>
+      <version>0.1.13</version>
     </dependency>
     <dependency>
       <groupId>net.sridharan.objectconstruction</groupId>
       <artifactId>must-call-qual</artifactId>
-      <version>0.1.12</version>
+      <version>0.1.13</version>
     </dependency>
   </dependencies>
 
@@ -261,7 +261,7 @@ https://maven.apache.org/xsd/maven-4.0.0.xsd">
             <path>
               <groupId>net.sridharan.objectconstruction</groupId>
               <artifactId>object-construction-checker</artifactId>
-              <version>0.1.12</version>
+              <version>0.1.13</version>
             </path>
             <path>
               <groupId>org.checkerframework</groupId>
