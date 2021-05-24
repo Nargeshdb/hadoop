@@ -42,7 +42,6 @@ public interface CompressionCodec {
    * @return a stream the user can write uncompressed data to have it compressed
    * @throws IOException
    */
-  @SuppressWarnings("mustcall")
   @MustCallAlias CompressionOutputStream createOutputStream(@MustCallAlias OutputStream out)
   throws IOException;
   
@@ -55,7 +54,6 @@ public interface CompressionCodec {
    * @return a stream the user can write uncompressed data to have it compressed
    * @throws IOException
    */
-  @SuppressWarnings("mustcall")
   @MustCallAlias CompressionOutputStream createOutputStream(@MustCallAlias OutputStream out,
                                              Compressor compressor) 
   throws IOException;
@@ -82,7 +80,6 @@ public interface CompressionCodec {
    * @return a stream to read uncompressed bytes from
    * @throws IOException
    */
-  @SuppressWarnings("mustcall")
   @MustCallAlias CompressionInputStream createInputStream(@MustCallAlias InputStream in) throws IOException;
   
   /**
@@ -94,7 +91,6 @@ public interface CompressionCodec {
    * @return a stream to read uncompressed bytes from
    * @throws IOException
    */
-  @SuppressWarnings("mustcall")
   @MustCallAlias CompressionInputStream createInputStream(@MustCallAlias InputStream in,
                                            Decompressor decompressor) 
   throws IOException;
@@ -130,7 +126,6 @@ public interface CompressionCodec {
      * @return            The new output stream
      * @throws IOException
      */
-    @SuppressWarnings("mustcall")
     static @MustCallAlias CompressionOutputStream createOutputStreamWithCodecPool(
         CompressionCodec codec, Configuration conf, @MustCallAlias OutputStream out)
         throws IOException {
@@ -157,7 +152,6 @@ public interface CompressionCodec {
      * @return            The new input stream
      * @throws IOException
      */
-    @SuppressWarnings("mustcall")
     static @MustCallAlias CompressionInputStream createInputStreamWithCodecPool(
         CompressionCodec codec,  Configuration conf, @MustCallAlias InputStream in)
           throws IOException {

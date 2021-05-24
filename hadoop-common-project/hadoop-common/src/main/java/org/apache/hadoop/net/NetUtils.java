@@ -469,7 +469,6 @@ public class NetUtils {
    * @return OutputStream for writing to the socket.
    * @throws IOException   
    */
-  @SuppressWarnings("mustcall")
   @MustCallAlias public static OutputStream getOutputStream(@MustCallAlias Socket socket, long timeout)
                                              throws IOException {
     return (socket.getChannel() == null) ? 

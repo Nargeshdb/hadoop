@@ -41,7 +41,6 @@ public final class LimitInputStream extends FilterInputStream {
   private long left;
   private long mark = -1;
 
-  @SuppressWarnings("mustcall")
   @MustCallAlias public LimitInputStream(@MustCallAlias InputStream in, long limit) {
     super(in);
     checkNotNull(in);
