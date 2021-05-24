@@ -76,7 +76,7 @@ public class BestEffortLongFile implements Closeable {
     value = newVal;
   }
 
-  @SuppressWarnings({"objectconstruction:required.method.not.called", "objectconstruction:missing.creates.obligation"}) //FP: overwrite ch only if it's null
+  @SuppressWarnings({"objectconstruction:required.method.not.called", "objectconstruction:missing.creates.obligation"}) //FP: overwrite ch only if it's null (DISAGREE: I think this still creates an obligation.)
   private void lazyOpen() throws IOException {
     if (ch != null) {
       return;

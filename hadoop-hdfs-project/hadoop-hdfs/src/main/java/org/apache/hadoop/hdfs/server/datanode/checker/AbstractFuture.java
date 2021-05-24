@@ -894,7 +894,7 @@ public abstract class AbstractFuture<V> implements ListenableFuture<V> {
     }
   }
 
-  @SuppressWarnings("mustcall:return.type.incompatible") //FP: needs annotation on com.google.common.util.concurrent#getUninterruptibly
+  @SuppressWarnings("mustcall:return.type.incompatible") //FP: needs annotation on com.google.common.util.concurrent#getUninterruptibly (DISAGREE we should add annotation)
   public static @MustCall({}) <V> V getDone(Future<V> future) throws ExecutionException {
     /*
      * We throw IllegalStateException, since the call could succeed later.

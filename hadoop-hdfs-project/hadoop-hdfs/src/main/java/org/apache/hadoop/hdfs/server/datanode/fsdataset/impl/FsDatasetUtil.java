@@ -123,7 +123,7 @@ public class FsDatasetUtil {
     }
   }
 
-  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: needs adding annotation for Channels
+  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: needs adding annotation for Channels (DISAGREE: we should add the annotation)
   public static InputStream getInputStreamAndSeek(File file, long offset)
       throws IOException {
     RandomAccessFile raf = null;

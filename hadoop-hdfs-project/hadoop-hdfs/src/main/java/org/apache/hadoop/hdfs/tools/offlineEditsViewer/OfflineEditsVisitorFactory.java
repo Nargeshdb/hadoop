@@ -43,7 +43,7 @@ public class OfflineEditsVisitorFactory {
    *
    * @return EditsVisitor for appropriate output format (binary, xml, etc.)
    */
-  @SuppressWarnings("objectconstruction:required.method.not.called") //TP: IOUtils.closeStream(fout) this will not close fout in the regular path because of the null assignment
+  @SuppressWarnings("objectconstruction:required.method.not.called") //TP: IOUtils.closeStream(fout) this will not close fout in the regular path because of the null assignment (validated)
   static public OfflineEditsVisitor getEditsVisitor(String filename,
     String processor, boolean printToScreen) throws IOException {
     if(StringUtils.equalsIgnoreCase("binary", processor)) {

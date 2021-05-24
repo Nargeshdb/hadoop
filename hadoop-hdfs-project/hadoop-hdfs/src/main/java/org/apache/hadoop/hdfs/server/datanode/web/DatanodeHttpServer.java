@@ -101,7 +101,7 @@ public class DatanodeHttpServer implements Closeable {
   private InetSocketAddress httpAddress;
   private InetSocketAddress httpsAddress;
 
-  @SuppressWarnings("objectconstruction:required.method.not.called") //TP: externalHttpChannel remains open in possible exceptional exit due to builder.build()
+  @SuppressWarnings("objectconstruction:required.method.not.called") //TP: externalHttpChannel remains open in possible exceptional exit due to builder.build() (DISAGREE: not sure of the warning key, but with @MCA it should be the caller's responsibility to handle the exceptional exit case)
   public @MustCallAlias DatanodeHttpServer(final Configuration conf,
         final DataNode datanode,
         final @MustCallAlias ServerSocketChannel externalHttpChannel)

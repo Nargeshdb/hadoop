@@ -53,7 +53,7 @@ public class ReplicaOutputStreams implements Closeable {
    * Create an object with a data output stream, a checksum output stream
    * and a checksum.
    */
-  @SuppressWarnings({"mustcall:assignment.type.incompatible","objectconstruction:required.method.not.called"}) //FP: we should define tempvar for TypeCastNode
+  @SuppressWarnings({"mustcall:assignment.type.incompatible","objectconstruction:required.method.not.called"}) //FP: we should define tempvar for TypeCastNode (validated)
   @MustCallAlias public ReplicaOutputStreams(@Owning OutputStream dataOut, @MustCallAlias OutputStream checksumOut, DataChecksum checksum,
                               FsVolumeSpi volume, FileIoProvider fileIoProvider) {
 

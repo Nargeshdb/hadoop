@@ -144,7 +144,7 @@ public class TextFileRegionAliasMap
   }
 
   @VisibleForTesting
-  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: tmp with MCC with out
+  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: tmp with MCC with out (validated)
   TextWriter createWriter(Path file, CompressionCodec codec, String delim,
       Configuration cfg) throws IOException {
     FileSystem fs = file.getFileSystem(cfg);
@@ -347,7 +347,7 @@ public class TextFileRegionAliasMap
         throw new UnsupportedOperationException();
       }
     }
-    @SuppressWarnings("objectconstruction:required.method.not.called") //FP: can't handle Map
+    @SuppressWarnings("objectconstruction:required.method.not.called") //FP: can't handle Map (DISAGREE: multiple issues)
     private FileRegion nextInternal(Iterator<FileRegion> i) throws IOException {
       BufferedReader r = iterators.get(i);
       if (null == r) {
@@ -371,7 +371,7 @@ public class TextFileRegionAliasMap
           nonce);
     }
 
-    @SuppressWarnings("objectconstruction:required.method.not.called") //TP: i remains open in possible exceptional exit due to codec.createInputStream(i)
+    @SuppressWarnings("objectconstruction:required.method.not.called") //TP: i remains open in possible exceptional exit due to codec.createInputStream(i) (validated)
     public InputStream createStream() throws IOException {
       InputStream i = fs.open(file);
       if (codec != null) {
@@ -381,7 +381,7 @@ public class TextFileRegionAliasMap
     }
 
     @Override
-    @SuppressWarnings("objectconstruction:required.method.not.called") //FP: ownership is transferred to map
+    @SuppressWarnings("objectconstruction:required.method.not.called") //FP: ownership is transferred to map (DISAGREE: multiple issues)
     public Iterator<FileRegion> iterator() {
       FRIterator i = new FRIterator();
       try {

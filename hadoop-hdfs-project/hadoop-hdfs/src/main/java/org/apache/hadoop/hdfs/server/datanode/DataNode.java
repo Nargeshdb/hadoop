@@ -971,7 +971,7 @@ public class DataNode extends ReconfigurableBase
    * for information related to the different configuration options and
    * Http Policy is decided.
    */
-  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: httpServerChannel is passed as a @MCA to DatanodeHttpServer
+  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: httpServerChannel is passed as a @MCA to DatanodeHttpServer (DISAGREE: even though it is @MCA this code needs to handle the IOException case)
   private void startInfoServer()
     throws IOException {
     // SecureDataNodeStarter will bind the privileged port to the channel if
@@ -1979,7 +1979,7 @@ public class DataNode extends ReconfigurableBase
     }
   }
 
-  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: can't handle ownership transfer to array (fis[0]) :: FP: same reason for fis[1]
+  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: can't handle ownership transfer to array (fis[0]) (validated) :: FP: same reason for fis[1] (validated) (MULTIPLE ISSUES)
   FileInputStream[] requestShortCircuitFdsForRead(final ExtendedBlock blk,
       final Token<BlockTokenIdentifier> token, int maxVersion) 
           throws ShortCircuitFdsUnsupportedException,

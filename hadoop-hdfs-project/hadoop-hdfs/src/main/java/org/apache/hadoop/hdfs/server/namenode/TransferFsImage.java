@@ -330,7 +330,7 @@ public class TransferFsImage {
     }
   }
 
-  @SuppressWarnings("objectconstruction:required.method.not.called") //TP: possible exceptional exit due to new FileInputStream(imageFile)
+  @SuppressWarnings("objectconstruction:required.method.not.called") //TP: possible exceptional exit due to new FileInputStream(imageFile) (validated)
   private static void writeFileToPutRequest(Configuration conf,
       HttpURLConnection connection, File imageFile, Canceler canceler)
       throws IOException {
@@ -357,7 +357,7 @@ public class TransferFsImage {
     copyFileToStream(out, localfile, infile, throttler, null);
   }
 
-  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: can't verify that out is closed by client
+  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: can't verify that out is closed by client (validated)
   private static void copyFileToStream(@Owning OutputStream out, File localfile,
       FileInputStream infile, DataTransferThrottler throttler,
       Canceler canceler) throws IOException {

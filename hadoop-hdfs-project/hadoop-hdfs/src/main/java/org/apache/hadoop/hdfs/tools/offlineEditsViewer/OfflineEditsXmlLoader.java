@@ -54,7 +54,7 @@ class OfflineEditsXmlLoader
     extends DefaultHandler implements OfflineEditsLoader {
   private final boolean fixTxIds;
   private final OfflineEditsVisitor visitor;
-  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: No @MustCall annotation
+  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: No @MustCall annotation (DISAGREE: we should just add the @MustCall annotation)
   private final @Owning InputStreamReader fileReader;
   private ParseState state;
   private Stanza stanza;
