@@ -371,7 +371,7 @@ public class Diff<K, E extends Diff.Element<K>> {
    *         be null which means that the element is not found in the previous
    *         state.
    */
-  @SuppressWarnings({"mustcall:argument.type.incompatible"}) // FP: https://github.com/typetools/checker-framework/issues/979 (DISAGREE: I don't see a warning here??)
+  @SuppressWarnings({"mustcall:argument.type.incompatible"}) // FP: https://github.com/typetools/checker-framework/issues/979 (validated)
   public Container<E> accessPrevious(final K name) {
     return accessPrevious(name, created, deleted);
   }

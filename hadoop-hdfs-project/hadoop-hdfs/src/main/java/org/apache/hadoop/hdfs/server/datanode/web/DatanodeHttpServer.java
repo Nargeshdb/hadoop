@@ -101,13 +101,12 @@ public class DatanodeHttpServer implements Closeable {
   private InetSocketAddress httpAddress;
   private InetSocketAddress httpsAddress;
 
-  @SuppressWarnings("objectconstruction:required.method.not.called") //TP: externalHttpChannel remains open in possible exceptional exit due to builder.build() (DISAGREE: not sure of the warning key, but with @MCA it should be the caller's responsibility to handle the exceptional exit case)
+  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: caller should catch the IOException and close externalHttpChannel
   public @MustCallAlias DatanodeHttpServer(final Configuration conf,
         final DataNode datanode,
         final @MustCallAlias ServerSocketChannel externalHttpChannel)
         throws IOException {
     this.conf = conf;
-
     Configuration confForInfoServer = new Configuration(conf);
     confForInfoServer.setInt(HttpServer2.HTTP_MAX_THREADS_KEY,
         HTTP_MAX_THREADS);
