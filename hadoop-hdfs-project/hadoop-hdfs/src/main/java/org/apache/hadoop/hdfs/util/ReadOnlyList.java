@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 import org.apache.hadoop.classification.InterfaceAudience;
+import org.checkerframework.checker.mustcall.qual.MustCall;
 
 /**
  * A {@link ReadOnlyList} is a unmodifiable list,
@@ -140,7 +141,7 @@ public interface ReadOnlyList<E> extends Iterable<E> {
         }
 
         @Override
-        @SuppressWarnings("mustcall:assignment.type.incompatible")
+        @SuppressWarnings("mustcall:assignment.type.incompatible") //FP: adding @MC({}) to get() leads to adding a lot of @MC({}) annotations to other methods so I just suppressed this warning
         public Object[] toArray() {
           final Object[] a = new Object[size()];
           for(int i = 0; i < a.length; i++) {

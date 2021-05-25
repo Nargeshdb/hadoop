@@ -253,7 +253,6 @@ public class IOUtils {
    * instead
    */
   @Deprecated
-  @SuppressWarnings({"ensuresvarargs.unverified", "contracts.postcondition.not.satisfied", "required.method.not.called"})
   @EnsuresCalledMethodsVarArgs("close")
   public static void cleanup(Log log, java.io.Closeable... closeables) {
     for (java.io.Closeable c : closeables) {
@@ -276,7 +275,6 @@ public class IOUtils {
    * @param logger the log to record problems to at debug level. Can be null.
    * @param closeables the objects to close
    */
-  @SuppressWarnings({"ensuresvarargs.unverified", "contracts.postcondition.not.satisfied", "required.method.not.called"})
   @EnsuresCalledMethodsVarArgs("close")
   public static void cleanupWithLogger(Logger logger,
       java.io.Closeable... closeables) {
@@ -299,7 +297,6 @@ public class IOUtils {
    *
    * @param stream the Stream to close
    */
-  @SuppressWarnings({"contracts.postcondition.not.satisfied", "required.method.not.called"})
   @EnsuresCalledMethods(value = "#1", methods = "close")
   public static void closeStream(java.io.Closeable stream) {
     if (stream != null) {
@@ -313,7 +310,6 @@ public class IOUtils {
    *
    * @param streams the Streams to close
    */
-  @SuppressWarnings({"ensuresvarargs.unverified", "contracts.postcondition.not.satisfied", "required.method.not.called"})
   @EnsuresCalledMethodsVarArgs("close")
   public static void closeStreams(java.io.Closeable... streams) {
     if (streams != null) {

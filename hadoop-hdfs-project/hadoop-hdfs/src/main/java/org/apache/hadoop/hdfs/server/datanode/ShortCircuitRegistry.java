@@ -281,7 +281,7 @@ public class ShortCircuitRegistry {
       return shmId;
     }
 
-    @NotOwning public FileInputStream getFileStream() {
+    public @NotOwning FileInputStream getFileStream() {
       return stream;
     }
 

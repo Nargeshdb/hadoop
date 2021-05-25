@@ -313,7 +313,6 @@ class BlockReceiver implements Closeable {
    * close files and release volume reference.
    */
   @Override
-  @SuppressWarnings("contracts.postcondition.not.satisfied")
   @EnsuresCalledMethods(value = {"this.checksumOut"}, methods = {"close"})
   public void close() throws IOException {
     Span span = Tracer.getCurrentSpan();

@@ -30,6 +30,8 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 import com.google.common.util.concurrent.Uninterruptibles;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import org.checkerframework.checker.mustcall.qual.MustCall;
+
 import static java.util.concurrent.atomic.AtomicReferenceFieldUpdater
         .newUpdater;
 
@@ -823,7 +825,6 @@ public abstract class AbstractFuture<V> implements ListenableFuture<V> {
    * <p>
    * <p>This is approximately the inverse of {@link #getDoneValue(Object)}
    */
-  @SuppressWarnings("mustcall:return.type.incompatible")
   private static Object getFutureValue(ListenableFuture<?> future) {
     Object valueToSet;
     if (future instanceof TrustedFuture) {
@@ -893,7 +894,8 @@ public abstract class AbstractFuture<V> implements ListenableFuture<V> {
     }
   }
 
-  public static <V> V getDone(Future<V> future) throws ExecutionException {
+  @SuppressWarnings("mustcall:return.type.incompatible") //FP: needs annotation on com.google.common.util.concurrent#getUninterruptibly
+  public static @MustCall({}) <V> V getDone(Future<V> future) throws ExecutionException {
     /*
      * We throw IllegalStateException, since the call could succeed later.
      * Perhaps we "should" throw IllegalArgumentException, since the call

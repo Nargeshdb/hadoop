@@ -77,8 +77,7 @@ public class ReplicaInputStreams implements Closeable {
     return checksumIn;
   }
 
-  @SuppressWarnings("mustcall:return.type.incompatible")
-  public FileDescriptor getDataInFd() {
+  public @NotOwning @MustCall({"close"}) FileDescriptor getDataInFd() {
     return dataInFd;
   }
 
@@ -146,7 +145,6 @@ public class ReplicaInputStreams implements Closeable {
   }
 
   @Override
-  @SuppressWarnings("contracts.postcondition.not.satisfied")
   @EnsuresCalledMethods(value = {"this.dataIn", "this.checksumIn"}, methods = {"close"})
   public void close() {
     IOUtils.closeStream(dataIn);

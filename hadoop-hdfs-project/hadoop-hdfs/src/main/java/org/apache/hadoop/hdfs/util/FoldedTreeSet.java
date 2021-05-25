@@ -18,6 +18,7 @@
 package org.apache.hadoop.hdfs.util;
 
 import org.apache.hadoop.util.Time;
+import org.checkerframework.checker.mustcall.qual.MustCall;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -216,7 +217,7 @@ public class FoldedTreeSet<E> implements SortedSet<E> {
       return size == 0;
     }
 
-    @SuppressWarnings("mustcall:argument.type.incompatible")
+    @SuppressWarnings("mustcall:argument.type.incompatible") //FP: adding @MC({}) to entries leads to adding a lot of @MC({}) annotations to other methods so I just suppressed this warning
     public void clear() {
       if (leftIndex < rightIndex) {
         Arrays.fill(entries, leftIndex, rightIndex + 1, null);

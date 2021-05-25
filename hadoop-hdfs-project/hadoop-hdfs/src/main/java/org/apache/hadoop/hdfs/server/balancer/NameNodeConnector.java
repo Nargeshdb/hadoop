@@ -303,7 +303,6 @@ public class NameNodeConnector implements Closeable {
   }
 
   @Override
-  @SuppressWarnings("contracts.postcondition.not.satisfied")
   @EnsuresCalledMethods(value = {"this.keyManager", "this.out"}, methods = {"close"})
   public void close() {
     keyManager.close();

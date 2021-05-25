@@ -133,7 +133,7 @@ public class Journal implements Closeable {
    * during the recovery procedures, and as a visibility mark
    * for clients reading in-progress logs.
    */
-  private @Owning BestEffortLongFile committedTxnId;
+  private BestEffortLongFile committedTxnId;
   
   public static final String LAST_PROMISED_FILENAME = "last-promised-epoch";
   public static final String LAST_WRITER_EPOCH = "last-writer-epoch";
@@ -159,7 +159,6 @@ public class Journal implements Closeable {
    */
   private static final int WARN_SYNC_MILLIS_THRESHOLD = 1000;
 
-  @SuppressWarnings("objectconstruction:reset.not.owning")
   Journal(Configuration conf, File logDir, String journalId,
       StartupOption startOpt, StorageErrorReporter errorReporter)
       throws IOException {
@@ -203,7 +202,6 @@ public class Journal implements Closeable {
    * when we first load the Journal, but also after any formatting
    * operation, since the cached data is no longer relevant.
    */
-  @CreatesObligation("this")
   private synchronized void refreshCachedData() {
     IOUtils.closeStream(committedTxnId);
     
@@ -253,7 +251,6 @@ public class Journal implements Closeable {
   /**
    * Format the local storage with the given namespace.
    */
-  @CreatesObligation("this")
   void format(NamespaceInfo nsInfo, boolean force) throws IOException {
     Preconditions.checkState(nsInfo.getNamespaceID() != 0,
         "can't format with uninitialized namespace info: %s",
@@ -1124,7 +1121,6 @@ public class Journal implements Closeable {
     storage.getJournalManager().doPreUpgrade();
   }
 
-  @SuppressWarnings("objectconstruction:missing.creates.obligation")
   public synchronized void doUpgrade(StorageInfo sInfo) throws IOException {
     long oldCTime = storage.getCTime();
     storage.cTime = sInfo.cTime;

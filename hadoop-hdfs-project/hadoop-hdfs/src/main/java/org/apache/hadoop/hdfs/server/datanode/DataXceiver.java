@@ -67,6 +67,7 @@ import org.apache.hadoop.security.token.Token;
 import org.apache.hadoop.util.DataChecksum;
 import org.apache.hadoop.util.StopWatch;
 import org.apache.hadoop.util.Time;
+import org.checkerframework.checker.mustcall.qual.MustCall;
 import org.checkerframework.checker.objectconstruction.qual.NotOwning;
 import org.slf4j.Logger;
 
@@ -480,7 +481,7 @@ class DataXceiver extends Receiver implements Runnable {
         setError(error).build().writeDelimitedTo(socketOut);
   }
 
-  @SuppressWarnings("mustcall:assignment.type.incompatible")
+  @SuppressWarnings("mustcall:assignment.type.incompatible") //FP: getFD is MCA with a @NotOwning method
   private void sendShmSuccessResponse(DomainSocket sock, NewShmInfo shmInfo)
       throws IOException {
     DataNodeFaultInjector.get().sendShortCircuitShmResponse();
@@ -490,7 +491,7 @@ class DataXceiver extends Receiver implements Runnable {
     // Send the file descriptor for the shared memory segment.
     byte buf[] = new byte[] { (byte)0 };
     FileDescriptor shmFdArray[] =
-        new FileDescriptor[] {shmInfo.getFileStream().getFD()};
+            new FileDescriptor[] {shmInfo.getFileStream().getFD()};
     sock.sendFileDescriptors(shmFdArray, buf, 0, buf.length);
   }
 
