@@ -19,6 +19,7 @@ package org.apache.hadoop.hdfs.tools.offlineEditsViewer;
 
 import java.io.IOException;
 
+import org.checkerframework.checker.mustcall.qual.MustCall;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.hadoop.classification.InterfaceAudience;
@@ -34,6 +35,7 @@ import org.apache.hadoop.io.IOUtils;
  */
 @InterfaceAudience.Private
 @InterfaceStability.Unstable
+@MustCall("loadEdits")
 class OfflineEditsBinaryLoader implements OfflineEditsLoader {
   private final OfflineEditsVisitor visitor;
   private final EditLogInputStream inputStream;

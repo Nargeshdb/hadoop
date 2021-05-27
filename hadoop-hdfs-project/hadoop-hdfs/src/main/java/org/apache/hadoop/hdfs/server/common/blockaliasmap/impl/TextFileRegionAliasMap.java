@@ -347,7 +347,7 @@ public class TextFileRegionAliasMap
         throw new UnsupportedOperationException();
       }
     }
-    @SuppressWarnings("objectconstruction:required.method.not.called") //FP: can't handle Map (DISAGREE: multiple issues)
+    @SuppressWarnings("objectconstruction:required.method.not.called") //FP: can't handle Map.get() ::: FP: can't handle Map.remove()
     private FileRegion nextInternal(Iterator<FileRegion> i) throws IOException {
       BufferedReader r = iterators.get(i);
       if (null == r) {
@@ -381,7 +381,7 @@ public class TextFileRegionAliasMap
     }
 
     @Override
-    @SuppressWarnings("objectconstruction:required.method.not.called") //FP: ownership is transferred to map (DISAGREE: multiple issues)
+    @SuppressWarnings("objectconstruction:required.method.not.called") //FP: ownership of r is transferred to map ::: FP: Can't handle Map.put()
     public Iterator<FileRegion> iterator() {
       FRIterator i = new FRIterator();
       try {

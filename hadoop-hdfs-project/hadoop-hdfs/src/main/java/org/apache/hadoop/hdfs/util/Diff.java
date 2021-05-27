@@ -283,7 +283,7 @@ public class Diff<K, E extends Diff.Element<K>> {
    * Delete an element from current state.
    * @return the undo information.
    */
-  @SuppressWarnings("mustcall:argument.type.incompatible") // FP: https://github.com/typetools/checker-framework/issues/979 (DISAGREE: two issues here)
+  @SuppressWarnings("mustcall:argument.type.incompatible") // FP: https://github.com/typetools/checker-framework/issues/979 ::: FP: https://github.com/typetools/checker-framework/issues/979
   public UndoInfo<E> delete(final E element) {
     final int c = search(created, element.getKey());
     E previous = null;
@@ -316,7 +316,7 @@ public class Diff<K, E extends Diff.Element<K>> {
    * Modify an element in current state.
    * @return the undo information.
    */
-  @SuppressWarnings("mustcall:argument.type.incompatible") // FP: https://github.com/typetools/checker-framework/issues/979 (DISAGREE: two issues here)
+  @SuppressWarnings("mustcall:argument.type.incompatible") // FP: https://github.com/typetools/checker-framework/issues/979 ::: FP: https://github.com/typetools/checker-framework/issues/979
   public UndoInfo<E> modify(final E oldElement, final E newElement) {
     Preconditions.checkArgument(oldElement != newElement,
         "They are the same object: oldElement == newElement = %s", newElement);
@@ -376,7 +376,7 @@ public class Diff<K, E extends Diff.Element<K>> {
     return accessPrevious(name, created, deleted);
   }
 
-  @SuppressWarnings("mustcall:type.argument.type.incompatible") // FP: https://github.com/typetools/checker-framework/issues/979 (DISAGREE: two issues)
+  @SuppressWarnings("mustcall:type.argument.type.incompatible") // FP: https://github.com/typetools/checker-framework/issues/979 ::: FP: https://github.com/typetools/checker-framework/issues/979
   private static <K, E extends Diff.Element<K>> Container<E> accessPrevious(
       final K name, final List<E> clist, final List<E> dlist) {
     final int d = search(dlist, name);

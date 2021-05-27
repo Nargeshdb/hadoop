@@ -74,7 +74,7 @@ public class EditLogFileOutputStream extends EditLogOutputStream {
    *          Size of flush buffer
    * @throws IOException
    */
-  @SuppressWarnings("objectconstruction:required.method.not.called") //TP: rp remains open in possible exceptional exit due to rp.getFD() (validated) :: TP: same reason (validated) (MULTIPLE ISSUES)
+  @SuppressWarnings("objectconstruction:required.method.not.called") //TP: rp remains open in possible exceptional exit due to rp.getFD() (validated) ::: TP: same reason (validated) (MULTIPLE ISSUES)
   public EditLogFileOutputStream(Configuration conf, File name, int size)
       throws IOException {
     super();

@@ -26,12 +26,14 @@ import org.apache.hadoop.hdfs.server.common.HdfsServerConstants;
 import org.apache.hadoop.hdfs.server.namenode.EditLogFileInputStream;
 
 import org.apache.hadoop.hdfs.server.namenode.EditLogInputStream;
+import org.checkerframework.checker.mustcall.qual.MustCall;
 
 /**
  * OfflineEditsLoader walks an EditsVisitor over an EditLogInputStream
  */
 @InterfaceAudience.Private
 @InterfaceStability.Unstable
+@MustCall("loadEdits")
 interface OfflineEditsLoader {
   
   abstract public void loadEdits() throws IOException;

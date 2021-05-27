@@ -1979,7 +1979,7 @@ public class DataNode extends ReconfigurableBase
     }
   }
 
-  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: can't handle ownership transfer to array (fis[0]) (validated) :: FP: same reason for fis[1] (validated) (MULTIPLE ISSUES)
+  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: can't handle ownership transfer to array (fis[0]) (validated) ::: FP: same reason for fis[1] (validated) (MULTIPLE ISSUES)
   FileInputStream[] requestShortCircuitFdsForRead(final ExtendedBlock blk,
       final Token<BlockTokenIdentifier> token, int maxVersion) 
           throws ShortCircuitFdsUnsupportedException,

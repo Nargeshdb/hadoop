@@ -62,11 +62,13 @@ public class BestEffortLongFile implements Closeable {
     this.defaultVal = defaultVal;
   }
 
+  @SuppressWarnings("objectconstruction:reset.not.owning") // BestEffortLongFile isn't a JDK class
   public long get() throws IOException {
     lazyOpen();
     return value;
   }
 
+  @SuppressWarnings("objectconstruction:reset.not.owning") // BestEffortLongFile isn't a JDK class
   public void set(long newVal) throws IOException {
     lazyOpen();
     buf.clear();
@@ -76,7 +78,8 @@ public class BestEffortLongFile implements Closeable {
     value = newVal;
   }
 
-  @SuppressWarnings({"objectconstruction:required.method.not.called", "objectconstruction:missing.creates.obligation"}) //FP: overwrite ch only if it's null (DISAGREE: I think this still creates an obligation.)
+  @SuppressWarnings({"objectconstruction:required.method.not.called"}) //FP: overwrite ch only if it's null
+  @CreatesObligation("this")
   private void lazyOpen() throws IOException {
     if (ch != null) {
       return;

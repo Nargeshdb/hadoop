@@ -166,7 +166,6 @@ final class BlockChecksumHelper {
     // client side now can specify a range of the block for checksum
     private final long requestLength;
     private final @Owning LengthInputStream metadataIn;
-    @SuppressWarnings("objectconstruction:required.method.not.called") //FP: compute() call close (DISAGREE: we can write @EnsuresCalledMethods even on abstract compute() method)
     private final @Owning DataInputStream checksumIn;
     private final long visibleLength;
     private final boolean partialBlk;
@@ -236,6 +235,7 @@ final class BlockChecksumHelper {
      *
      * @throws IOException
      */
+    @EnsuresCalledMethods(value = {"this.checksumIn", "this.metadataIn"}, methods = {"close"})
     abstract void compute() throws IOException;
 
     /**

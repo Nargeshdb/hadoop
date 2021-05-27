@@ -192,7 +192,7 @@ public final class Util {
    * Receives file at the url location from the input stream and puts them in
    * the specified destination storage location.
    */
-  @SuppressWarnings("objectconstruction:required.method.not.called") //TP: stream remains open in possible exceptional exit due to throw new IOException("No filename header provided by server"); (DISAGREE: multiple reports in this method, some are false positives)
+  @SuppressWarnings("objectconstruction:required.method.not.called") //TP: stream remains open in possible exceptional exit due to throw new IOException("No filename header provided by server") ::: FP: Ownership of "fos" is transferred to outputStreams ::: FP: can't handle for loop on a list ::: TP: fos remains open in possible exceptional exit due to fos.getChannel().force(true)
   public static MD5Hash receiveFile(String url, List<File> localPaths,
       Storage dstStorage, boolean getChecksum, long advertisedSize,
       MD5Hash advertisedDigest, String fsImageName,@Owning InputStream stream,
