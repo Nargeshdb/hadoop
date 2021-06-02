@@ -21,6 +21,7 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import org.checkerframework.checker.mustcall.qual.CreatesObligation;
 import org.checkerframework.checker.mustcall.qual.MustCall;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -425,6 +426,7 @@ public class JournalNode implements Tool, Configurable, JournalNodeMXBean {
     getOrCreateJournal(journalId).doPreUpgrade();
   }
 
+  @SuppressWarnings("objectconstruction:reset.not.owning") // it's not a JDK type
   public void doUpgrade(String journalId, StorageInfo sInfo) throws IOException {
     getOrCreateJournal(journalId).doUpgrade(sInfo);
   }

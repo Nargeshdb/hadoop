@@ -347,8 +347,8 @@ class DataXceiver extends Receiver implements Runnable {
     }
   }
 
+  @SuppressWarnings({"objectconstruction:required.method.not.called"}) //FP: ownership transfer to array (validated)
   @Override
-  @SuppressWarnings({"mustcall:assignment.type.incompatible", "objectconstruction:required.method.not.called"}) //FP: ownership transfer to array (validated) (MULTIPLE ISSUES?)
   public void requestShortCircuitFds(final ExtendedBlock blk,
       final Token<BlockTokenIdentifier> token,
       SlotId slotId, int maxVersion, boolean supportsReceiptVerification)
@@ -394,7 +394,7 @@ class DataXceiver extends Receiver implements Runnable {
       }
       bld.build().writeDelimitedTo(socketOut);
       if (fis != null) {
-        FileDescriptor fds[] = new FileDescriptor[fis.length];
+        @MustCall("close") FileDescriptor fds[] = new FileDescriptor[fis.length];
         for (int i = 0; i < fds.length; i++) {
           fds[i] = fis[i].getFD();
         }

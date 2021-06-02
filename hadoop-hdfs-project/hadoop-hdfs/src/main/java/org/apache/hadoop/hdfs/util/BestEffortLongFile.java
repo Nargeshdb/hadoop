@@ -62,13 +62,13 @@ public class BestEffortLongFile implements Closeable {
     this.defaultVal = defaultVal;
   }
 
-  @SuppressWarnings("objectconstruction:reset.not.owning") // BestEffortLongFile isn't a JDK class
+  @CreatesObligation("this")
   public long get() throws IOException {
     lazyOpen();
     return value;
   }
 
-  @SuppressWarnings("objectconstruction:reset.not.owning") // BestEffortLongFile isn't a JDK class
+  @CreatesObligation("this")
   public void set(long newVal) throws IOException {
     lazyOpen();
     buf.clear();

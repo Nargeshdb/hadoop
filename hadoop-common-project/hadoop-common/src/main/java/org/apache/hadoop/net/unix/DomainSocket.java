@@ -33,6 +33,7 @@ import org.apache.hadoop.util.NativeCodeLoader;
 import org.apache.hadoop.util.CloseableReferenceCount;
 
 import com.google.common.annotations.VisibleForTesting;
+import org.checkerframework.checker.mustcall.qual.MustCall;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -401,7 +402,7 @@ public class DomainSocket implements Closeable {
   }
 
   private native static void sendFileDescriptors0(int fd,
-      FileDescriptor descriptors[],
+      @MustCall("close") FileDescriptor descriptors[],
       byte jbuf[], int offset, int length) throws IOException;
 
   /**
@@ -414,7 +415,7 @@ public class DomainSocket implements Closeable {
    * @param offset            The offset in the jbuf array to start at.
    * @param length            Length of the jbuf array to use.
    */
-  public void sendFileDescriptors(FileDescriptor descriptors[],
+  public void sendFileDescriptors(@MustCall("close") FileDescriptor descriptors[],
       byte jbuf[], int offset, int length) throws IOException {
     refCount.reference();
     boolean exc = true;
