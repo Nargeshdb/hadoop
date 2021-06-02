@@ -426,7 +426,7 @@ public class JournalNode implements Tool, Configurable, JournalNodeMXBean {
     getOrCreateJournal(journalId).doPreUpgrade();
   }
 
-  @SuppressWarnings("objectconstruction:reset.not.owning") // it's not a JDK type
+  @SuppressWarnings("objectconstruction:reset.not.owning") // it's not a JDK type (validated)
   public void doUpgrade(String journalId, StorageInfo sInfo) throws IOException {
     getOrCreateJournal(journalId).doUpgrade(sInfo);
   }
