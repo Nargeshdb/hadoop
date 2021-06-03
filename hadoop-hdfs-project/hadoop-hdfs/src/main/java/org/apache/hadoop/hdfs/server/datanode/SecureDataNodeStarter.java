@@ -110,8 +110,8 @@ public class SecureDataNodeStarter implements Daemon {
    */
   @VisibleForTesting
   @SuppressWarnings({
-    "objectconstruction:required.method.not.called", // TP: httpChannel possible exceptional exit due to throw new RuntimeException("Unable to bind on specified info port in secure context. Needed " + infoSocAddr.getPort() + ", got " + ss.getLocalPort()) (validated)
-    "objectconstruction:required.method.not.called" // TP: ss also remains open (validated)
+//    "objectconstruction:required.method.not.called", // TP: httpChannel possible exceptional exit due to throw new RuntimeException("Unable to bind on specified info port in secure context. Needed " + infoSocAddr.getPort() + ", got " + ss.getLocalPort()) (validated)
+//    "objectconstruction:required.method.not.called" // TP: ss also remains open (validated)
   })
   public static SecureResources getSecureResources(Configuration conf)
       throws Exception {

@@ -193,10 +193,10 @@ public final class Util {
    * the specified destination storage location.
    */
   @SuppressWarnings({
-    "objectconstruction:required.method.not.called", // TP: stream remains open in possible exceptional exit due to throw new IOException("No filename header provided by server") (validated)
-    "objectconstruction:required.method.not.called", // FP: Ownership of "fos" is transferred to outputStreams (validated)
-    "objectconstruction:required.method.not.called", // FP: can't handle for loop on a list (validated)
-    "objectconstruction:required.method.not.called", // TP: fos remains open in possible exceptional exit due to fos.getChannel().force(true) (validated)
+//    "objectconstruction:required.method.not.called", // TP: stream remains open in possible exceptional exit due to throw new IOException("No filename header provided by server") (validated)
+//    "objectconstruction:required.method.not.called", // FP: Ownership of "fos" is transferred to outputStreams (validated)
+//    "objectconstruction:required.method.not.called", // FP: can't handle for loop on a list (validated)
+//    "objectconstruction:required.method.not.called", // TP: fos remains open in possible exceptional exit due to fos.getChannel().force(true) (validated)
   })
   public static MD5Hash receiveFile(String url, List<File> localPaths,
       Storage dstStorage, boolean getChecksum, long advertisedSize,

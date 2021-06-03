@@ -133,7 +133,7 @@ public class FSImageCompression {
    * @throws IOException If the decompressor cannot be instantiated or an IO
    * error occurs.
    */
-  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: if IOException happens is should be closed in caller method (validated)
+//  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: if IOException happens is should be closed in caller method (validated)
   @MustCallAlias DataInputStream unwrapInputStream(@MustCallAlias InputStream is) throws IOException {
     if (imageCodec != null) {
       return new DataInputStream(imageCodec.createInputStream(is));
@@ -155,7 +155,7 @@ public class FSImageCompression {
    * @throws IOException if an IO error occurs or the compressor cannot be
    * instantiated
    */
-  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: if IOException happens is should be closed in caller method (validated)
+//  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: if IOException happens is should be closed in caller method (validated)
   @MustCallAlias DataOutputStream writeHeaderAndWrapStream(@MustCallAlias OutputStream os)
   throws IOException {
     DataOutputStream dos = new DataOutputStream(os);

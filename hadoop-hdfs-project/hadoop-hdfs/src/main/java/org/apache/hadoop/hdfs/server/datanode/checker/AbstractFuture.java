@@ -894,7 +894,7 @@ public abstract class AbstractFuture<V> implements ListenableFuture<V> {
     }
   }
 
-  @SuppressWarnings("mustcall:return.type.incompatible") // FP: https://github.com/typetools/checker-framework/issues/979 (validated)
+//  @SuppressWarnings("mustcall:return.type.incompatible") // FP: https://github.com/typetools/checker-framework/issues/979 (validated)
   public static @MustCall({}) <V> V getDone(Future<V> future) throws ExecutionException {
     /*
      * We throw IllegalStateException, since the call could succeed later.

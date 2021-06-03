@@ -81,7 +81,7 @@ public final class FSImageUtil {
     return summary;
   }
 
-  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: caller should handle IOException (validated)
+//  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: caller should handle IOException (validated)
   public static @MustCallAlias InputStream wrapInputStreamForCompression(
       Configuration conf, String codec,@MustCallAlias InputStream in) throws IOException {
     if (codec.isEmpty())

@@ -907,7 +907,7 @@ public abstract class Storage extends StorageInfo {
      * <code>null</code> if storage is already locked.
      * @throws IOException if locking fails.
      */
-    @SuppressWarnings({"resource", "objectconstruction:required.method.not.called"}) //TP: file remains open in ossible exceptional exit due to file.readLine() (validated)
+//    @SuppressWarnings({"resource", "objectconstruction:required.method.not.called"}) //TP: file remains open in ossible exceptional exit due to file.readLine() (validated)
     FileLock tryLock() throws IOException {
       boolean deletionHookAdded = false;
       File lockF = new File(root, STORAGE_FILE_LOCK);

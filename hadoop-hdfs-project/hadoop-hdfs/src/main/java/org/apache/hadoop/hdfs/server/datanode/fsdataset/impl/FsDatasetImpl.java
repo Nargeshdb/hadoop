@@ -1161,7 +1161,7 @@ class FsDatasetImpl implements FsDatasetSpi<FsVolumeImpl> {
    * @param conf the {@link Configuration}
    * @throws IOException
    */
-  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: we can't verify IOUtils.closeStream(metaOut) (validated)
+//  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: we can't verify IOUtils.closeStream(metaOut) (validated)
   static void computeChecksum(ReplicaInfo srcReplica, File dstMeta,
       int smallBufferSize, final Configuration conf)
       throws IOException {

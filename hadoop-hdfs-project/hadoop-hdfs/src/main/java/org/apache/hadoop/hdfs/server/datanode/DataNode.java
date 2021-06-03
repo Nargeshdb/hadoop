@@ -971,7 +971,7 @@ public class DataNode extends ReconfigurableBase
    * for information related to the different configuration options and
    * Http Policy is decided.
    */
-  @SuppressWarnings("objectconstruction:required.method.not.called") //TP: should catch IOException from new DatanodeHttpServer (validated)
+//  @SuppressWarnings("objectconstruction:required.method.not.called") //TP: should catch IOException from new DatanodeHttpServer (validated)
   private void startInfoServer()
     throws IOException {
     // SecureDataNodeStarter will bind the privileged port to the channel if
@@ -1980,8 +1980,8 @@ public class DataNode extends ReconfigurableBase
   }
 
   @SuppressWarnings({
-    "objectconstruction:required.method.not.called", //FP: can't handle ownership transfer to array (fis[0]) (validated)
-    "objectconstruction:required.method.not.called" // FP: same reason for fis[1] (validated)
+//    "objectconstruction:required.method.not.called", //FP: can't handle ownership transfer to array (fis[0]) (validated)
+//    "objectconstruction:required.method.not.called" // FP: same reason for fis[1] (validated)
   })
   FileInputStream[] requestShortCircuitFdsForRead(final ExtendedBlock blk,
       final Token<BlockTokenIdentifier> token, int maxVersion) 

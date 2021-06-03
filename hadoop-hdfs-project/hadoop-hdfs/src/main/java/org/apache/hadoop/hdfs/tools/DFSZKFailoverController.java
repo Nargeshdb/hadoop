@@ -218,7 +218,7 @@ public class DFSZKFailoverController extends ZKFailoverController {
   /**
    * capture local NN's thread dump and write it to ZKFC's log.
    */
-  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: can’t handle with EnsuresCalledMethodsIf because the boolean is passed as a parameter (validated)
+//  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: can’t handle with EnsuresCalledMethodsIf because the boolean is passed as a parameter (validated)
   private void getLocalNNThreadDump() {
     isThreadDumpCaptured = false;
     // We use the same timeout value for both connection establishment

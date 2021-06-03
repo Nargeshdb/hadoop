@@ -144,7 +144,7 @@ public class TextFileRegionAliasMap
   }
 
   @VisibleForTesting
-  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: tmp with MCC with out (validated)
+//  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: tmp with MCC with out (validated)
   TextWriter createWriter(Path file, CompressionCodec codec, String delim,
       Configuration cfg) throws IOException {
     FileSystem fs = file.getFileSystem(cfg);
@@ -348,8 +348,8 @@ public class TextFileRegionAliasMap
       }
     }
     @SuppressWarnings({
-      "objectconstruction:required.method.not.called", // FP: can't handle Map.get() (validated)
-      "objectconstruction:required.method.not.called" // FP: can't handle Map.remove() (validated)
+//      "objectconstruction:required.method.not.called", // FP: can't handle Map.get() (validated)
+//      "objectconstruction:required.method.not.called" // FP: can't handle Map.remove() (validated)
     })
     private FileRegion nextInternal(Iterator<FileRegion> i) throws IOException {
       BufferedReader r = iterators.get(i);
@@ -374,7 +374,7 @@ public class TextFileRegionAliasMap
           nonce);
     }
 
-    @SuppressWarnings("objectconstruction:required.method.not.called") //TP: i remains open in possible exceptional exit due to codec.createInputStream(i) (validated)
+//    @SuppressWarnings("objectconstruction:required.method.not.called") //TP: i remains open in possible exceptional exit due to codec.createInputStream(i) (validated)
     public InputStream createStream() throws IOException {
       InputStream i = fs.open(file);
       if (codec != null) {
@@ -385,8 +385,8 @@ public class TextFileRegionAliasMap
 
     @Override
     @SuppressWarnings({
-      "objectconstruction:required.method.not.called", // FP: ownership of r is transferred to map (validated)
-      "objectconstruction:required.method.not.called" // FP: Can't handle Map.put() (validated)
+//      "objectconstruction:required.method.not.called", // FP: ownership of r is transferred to map (validated)
+//      "objectconstruction:required.method.not.called" // FP: Can't handle Map.put() (validated)
     })
     public Iterator<FileRegion> iterator() {
       FRIterator i = new FRIterator();

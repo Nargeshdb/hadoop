@@ -75,8 +75,8 @@ public class EditLogFileOutputStream extends EditLogOutputStream {
    * @throws IOException
    */
   @SuppressWarnings({
-    "objectconstruction:required.method.not.called", //TP: rp remains open in possible exceptional exit due to rp.getFD() (validated)
-    "objectconstruction:required.method.not.called" // TP: same reason (validated)
+//    "objectconstruction:required.method.not.called", //TP: rp remains open in possible exceptional exit due to rp.getFD() (validated)
+//    "objectconstruction:required.method.not.called" // TP: same reason (validated)
   })
   public EditLogFileOutputStream(Configuration conf, File name, int size)
       throws IOException {
