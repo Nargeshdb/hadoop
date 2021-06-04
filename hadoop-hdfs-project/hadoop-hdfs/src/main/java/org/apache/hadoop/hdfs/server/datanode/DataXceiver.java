@@ -481,7 +481,7 @@ class DataXceiver extends Receiver implements Runnable {
         setError(error).build().writeDelimitedTo(socketOut);
   }
 
-  @SuppressWarnings("mustcall:assignment.type.incompatible") //FP: getFD is MCA with a @NotOwning method (validated)
+  @SuppressWarnings("mustcall:assignment.type.incompatible") //FP: getFD is MCA with a NotOwning method (validated)
   private void sendShmSuccessResponse(DomainSocket sock, NewShmInfo shmInfo)
       throws IOException {
     DataNodeFaultInjector.get().sendShortCircuitShmResponse();
