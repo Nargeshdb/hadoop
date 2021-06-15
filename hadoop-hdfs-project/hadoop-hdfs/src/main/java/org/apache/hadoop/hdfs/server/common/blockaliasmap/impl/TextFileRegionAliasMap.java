@@ -144,7 +144,7 @@ public class TextFileRegionAliasMap
   }
 
   @VisibleForTesting
-  @SuppressWarnings("objectconstruction:required.method.not.called") //TP: tmp remains open if codec.createOutputStream(tmp) throws an exception
+  @SuppressWarnings("objectconstruction:required.method.not.called") // TP: tmp remains open if codec.createOutputStream(tmp) throws an exception
   TextWriter createWriter(Path file, CompressionCodec codec, String delim,
       Configuration cfg) throws IOException {
     FileSystem fs = file.getFileSystem(cfg);
@@ -374,7 +374,7 @@ public class TextFileRegionAliasMap
           nonce);
     }
 
-    @SuppressWarnings("objectconstruction:required.method.not.called") //TP: i remains open in possible exceptional exit due to codec.createInputStream(i) (validated)
+    @SuppressWarnings("objectconstruction:required.method.not.called") // TP: i remains open in possible exceptional exit due to codec.createInputStream(i) (validated)
     public InputStream createStream() throws IOException {
       InputStream i = fs.open(file);
       if (codec != null) {

@@ -374,7 +374,7 @@ public final class FSImageFormatPBINode {
       return numInodes;
     }
 
-    @SuppressWarnings("objectconstruction:required.method.not.called") //TP: loadINodeSectionHeader is called outside any try block and if it throws, ins won't be closed) (validated)
+    @SuppressWarnings("objectconstruction:required.method.not.called") // TP: loadINodeSectionHeader is called outside any try block and if it throws, ins won't be closed) (validated)
     void loadINodeSectionInParallel(ExecutorService service,
         ArrayList<FileSummary.Section> sections,
         String compressionCodec, StartupProgress prog,

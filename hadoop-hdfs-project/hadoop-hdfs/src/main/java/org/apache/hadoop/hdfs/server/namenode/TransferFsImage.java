@@ -330,7 +330,7 @@ public class TransferFsImage {
     }
   }
 
-  @SuppressWarnings("objectconstruction:required.method.not.called") //TP: possible exceptional exit due to new FileInputStream(imageFile) (validated)
+  @SuppressWarnings("objectconstruction:required.method.not.called") // TP: possible exceptional exit due to new FileInputStream(imageFile) (validated)
   private static void writeFileToPutRequest(Configuration conf,
       HttpURLConnection connection, File imageFile, Canceler canceler)
       throws IOException {

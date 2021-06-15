@@ -157,7 +157,7 @@ public class JMXGet {
    * @throws Exception
    *           initializes MBeanServer
    */
-  @SuppressWarnings("objectconstruction:required.method.not.called") //TP: jmxc remains open in possible exceptional exit due to jmxc.getMBeanServerConnection() (validated)
+  @SuppressWarnings("objectconstruction:required.method.not.called") // TP: jmxc remains open in possible exceptional exit due to jmxc.getMBeanServerConnection() (validated)
   public void init() throws Exception {
 
     err("init: server=" + server + ";port=" + port + ";service=" + service

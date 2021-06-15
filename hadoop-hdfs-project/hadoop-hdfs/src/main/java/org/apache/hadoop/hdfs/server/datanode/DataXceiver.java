@@ -1154,7 +1154,7 @@ class DataXceiver extends Receiver implements Runnable {
   }
 
   @Override
-  @SuppressWarnings("objectconstruction:required.method.not.called") //TP: proxySock remains open in possible exceptional exit (validated)
+  @SuppressWarnings("objectconstruction:required.method.not.called") // TP: proxySock remains open in possible exceptional exit (validated)
   public void replaceBlock(final ExtendedBlock block,
       final StorageType storageType,
       final Token<BlockTokenIdentifier> blockToken,
