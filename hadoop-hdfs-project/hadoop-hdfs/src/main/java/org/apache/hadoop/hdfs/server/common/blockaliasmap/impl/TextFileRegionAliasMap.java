@@ -144,7 +144,7 @@ public class TextFileRegionAliasMap
   }
 
   @VisibleForTesting
-  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: tmp with MCC with out (validated)
+  @SuppressWarnings("objectconstruction:required.method.not.called") //TP: tmp remains open if codec.createOutputStream(tmp) throws an exception
   TextWriter createWriter(Path file, CompressionCodec codec, String delim,
       Configuration cfg) throws IOException {
     FileSystem fs = file.getFileSystem(cfg);
