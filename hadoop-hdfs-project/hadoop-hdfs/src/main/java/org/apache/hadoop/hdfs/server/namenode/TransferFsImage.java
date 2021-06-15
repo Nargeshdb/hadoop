@@ -357,7 +357,7 @@ public class TransferFsImage {
     copyFileToStream(out, localfile, infile, throttler, null);
   }
 
-  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: can't verify that out is closed by client (validated)
+  @SuppressWarnings("objectconstruction:required.method.not.called") // FP nullness reasoning: out is closed in the finally block with a null check (validated)
   private static void copyFileToStream(@Owning OutputStream out, File localfile,
       FileInputStream infile, DataTransferThrottler throttler,
       Canceler canceler) throws IOException {

@@ -347,7 +347,7 @@ class DataXceiver extends Receiver implements Runnable {
     }
   }
 
-  @SuppressWarnings({"objectconstruction:required.method.not.called"}) //FP: ownership transfer to array (validated)
+  @SuppressWarnings({"objectconstruction:required.method.not.called"}) // FP container of owners: ownership transfer to array (validated)
   @Override
   public void requestShortCircuitFds(final ExtendedBlock blk,
       final Token<BlockTokenIdentifier> token,
@@ -481,7 +481,7 @@ class DataXceiver extends Receiver implements Runnable {
         setError(error).build().writeDelimitedTo(socketOut);
   }
 
-  @SuppressWarnings("mustcall:assignment.type.incompatible") //FP: getFD is MCA with a NotOwning method (validated)
+  @SuppressWarnings("mustcall:assignment.type.incompatible") // FP @MCA with a @NotOwning getter method: getFD is MCA with a NotOwning method (validated)
   private void sendShmSuccessResponse(DomainSocket sock, NewShmInfo shmInfo)
       throws IOException {
     DataNodeFaultInjector.get().sendShortCircuitShmResponse();

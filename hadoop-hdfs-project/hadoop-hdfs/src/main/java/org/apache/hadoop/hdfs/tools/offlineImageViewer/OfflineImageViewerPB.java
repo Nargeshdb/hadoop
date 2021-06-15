@@ -150,7 +150,7 @@ public class OfflineImageViewerPB {
     ExitUtil.terminate(status);
   }
 
-  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: need path sensitive analysis (validated)
+  @SuppressWarnings("objectconstruction:required.method.not.called") // FP nullness reasoning: close is called on out in the finally block with a null check (validated)
   public static int run(String[] args) throws Exception {
     Options options = buildOptions();
     if (args.length == 0) {

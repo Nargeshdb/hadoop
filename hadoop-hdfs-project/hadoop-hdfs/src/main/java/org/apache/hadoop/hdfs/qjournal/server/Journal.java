@@ -159,7 +159,7 @@ public class Journal implements Closeable {
    */
   private static final int WARN_SYNC_MILLIS_THRESHOLD = 1000;
 
-  @SuppressWarnings("objectconstruction:reset.not.owning") // FP: it's bug in our tool (validated)
+  @SuppressWarnings("objectconstruction:reset.not.owning") // FP CreatesObligation should permit the call (checker bug): this error is issued at the call to refreshCachedData() below with or without @CreatesObligation on this method(validated)
   Journal(Configuration conf, File logDir, String journalId,
       StartupOption startOpt, StorageErrorReporter errorReporter)
       throws IOException {

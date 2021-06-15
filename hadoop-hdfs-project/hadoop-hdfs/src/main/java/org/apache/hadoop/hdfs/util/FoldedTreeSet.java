@@ -217,7 +217,7 @@ public class FoldedTreeSet<E> implements SortedSet<E> {
       return size == 0;
     }
 
-    @SuppressWarnings("mustcall:argument.type.incompatible") //FP: adding @MC({}) to entries leads to adding a lot of @MC({}) annotations to other methods so I just suppressed this warning (validated)
+    @SuppressWarnings("mustcall:argument.type.incompatible") // FP Java 8 type argument inference: https://github.com/typetools/checker-framework/issues/979 (validated)
     public void clear() {
       if (leftIndex < rightIndex) {
         Arrays.fill(entries, leftIndex, rightIndex + 1, null);
@@ -1244,7 +1244,7 @@ public class FoldedTreeSet<E> implements SortedSet<E> {
    *
    * @return true if compaction completed, false if aborted
    */
-  @SuppressWarnings("mustcall:argument.type.incompatible") // FP: https://github.com/typetools/checker-framework/issues/979 (validated)
+  @SuppressWarnings("mustcall:argument.type.incompatible") // FP Java 8 type argument inference: https://github.com/typetools/checker-framework/issues/979 (validated)
   public boolean compact(long timeout) {
 
     if (!isEmpty()) {

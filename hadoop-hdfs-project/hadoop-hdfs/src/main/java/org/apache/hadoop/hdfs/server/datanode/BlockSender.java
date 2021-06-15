@@ -544,7 +544,7 @@ class BlockSender implements java.io.Closeable {
    * @param transferTo use transferTo to send data
    * @param throttler used for throttling data transfer bandwidth
    */
-  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: ris is an owning field so we shouldn't track fileCh (validated)
+  @SuppressWarnings("objectconstruction:required.method.not.called") // FP @MCA with a @NotOwning getter method: getDataIn() has @NotOwning annotation and getChannel() is @MCA with the receiver so we shouldn't track fileCh (validated)
   private int sendPacket(ByteBuffer pkt, int maxChunks, OutputStream out,
       boolean transferTo, DataTransferThrottler throttler) throws IOException {
     int dataLen = (int) Math.min(endOffset - offset,
@@ -761,7 +761,7 @@ class BlockSender implements java.io.Closeable {
     }
   }
 
-  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: ris is an owning field so we shouldn't track fileChannel (validated)
+  @SuppressWarnings("objectconstruction:required.method.not.called") // FP @MCA with a @NotOwning getter method: getDataIn() has @NotOwning annotation and getChannel() is @MCA with the receiver so we shouldn't track fileChannel (validated)
   private long doSendBlock(DataOutputStream out, OutputStream baseStream,
         DataTransferThrottler throttler) throws IOException {
     if (out == null) {

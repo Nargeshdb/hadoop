@@ -348,8 +348,8 @@ public class TextFileRegionAliasMap
       }
     }
     @SuppressWarnings({
-      "objectconstruction:required.method.not.called", // FP: can't handle Map.get() (validated)
-      "objectconstruction:required.method.not.called" // FP: can't handle Map.remove() (validated)
+      "objectconstruction:required.method.not.called", // FP container of owners: can't handle Map.get() (validated)
+      "objectconstruction:required.method.not.called" // FP container of owners: can't handle Map.remove() (validated)
     })
     private FileRegion nextInternal(Iterator<FileRegion> i) throws IOException {
       BufferedReader r = iterators.get(i);
@@ -385,8 +385,8 @@ public class TextFileRegionAliasMap
 
     @Override
     @SuppressWarnings({
-      "objectconstruction:required.method.not.called", // FP: ownership of r is transferred to map (validated)
-      "objectconstruction:required.method.not.called" // FP: Can't handle Map.put() (validated)
+      "objectconstruction:required.method.not.called", // FP container of owners: ownership of r is transferred to map (validated)
+      "objectconstruction:required.method.not.called" // FP container of owners: Can't handle Map.put() (validated)
     })
     public Iterator<FileRegion> iterator() {
       FRIterator i = new FRIterator();

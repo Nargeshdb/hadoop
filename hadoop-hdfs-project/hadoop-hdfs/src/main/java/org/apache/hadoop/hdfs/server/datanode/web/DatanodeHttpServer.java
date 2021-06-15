@@ -101,7 +101,7 @@ public class DatanodeHttpServer implements Closeable {
   private InetSocketAddress httpAddress;
   private InetSocketAddress httpsAddress;
 
-  @SuppressWarnings("objectconstruction:required.method.not.called") //FP: caller should catch the IOException and close externalHttpChannel (validated)
+  @SuppressWarnings("objectconstruction:required.method.not.called") // FP exception reasoning for wrappers: If we have @MCA on the return type, then callers should catch the exception and close the resources (validated)
   public @MustCallAlias DatanodeHttpServer(final Configuration conf,
         final DataNode datanode,
         final @MustCallAlias ServerSocketChannel externalHttpChannel)

@@ -141,7 +141,7 @@ public interface ReadOnlyList<E> extends Iterable<E> {
         }
 
         @Override
-        @SuppressWarnings("mustcall:assignment.type.incompatible") //FP: adding @MC({}) to get() leads to adding a lot of @MC({}) annotations to other methods so I just suppressed this warning (validated)
+        @SuppressWarnings("mustcall:assignment.type.incompatible") // FP Java 8 type argument inference: https://github.com/typetools/checker-framework/issues/979 (validated)
         public Object[] toArray() {
           final Object[] a = new Object[size()];
           for(int i = 0; i < a.length; i++) {
