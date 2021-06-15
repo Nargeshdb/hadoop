@@ -269,7 +269,7 @@ public class Journal implements Closeable {
    * Unlock and release resources.
    */
   @Override // Closeable
-  @SuppressWarnings("objectconstruction:contracts.postcondition.not.satisfied") // TP: committedTxnId and curSegment remain open in the possible exceptional exit due to storage.close() // (validated)
+  @SuppressWarnings("objectconstruction:contracts.postcondition.not.satisfied") // TP: committedTxnId and curSegment remain open in the possible exceptional exit due to storage.close() (validated)
   @EnsuresCalledMethods(value = {"this.committedTxnId"}, methods = {"close"})
   public void close() throws IOException {
     storage.close();

@@ -175,7 +175,7 @@ public class JournalNodeRpcServer implements QJournalProtocol,
   }
 
   @Override
-  @SuppressWarnings("objectconstruction:reset.not.owning") // it's not a JDK type (validated)
+  @SuppressWarnings("objectconstruction:reset.not.owning") // FP CreatesObligation should permit the call (checker bug): this error is issued at the call to format() below with or without @CreatesObligation on this method(validated)
   public void format(String journalId,
                      String nameServiceId,
                      NamespaceInfo nsInfo,

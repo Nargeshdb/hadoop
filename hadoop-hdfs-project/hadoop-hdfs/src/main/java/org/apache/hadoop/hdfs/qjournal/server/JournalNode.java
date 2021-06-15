@@ -426,7 +426,7 @@ public class JournalNode implements Tool, Configurable, JournalNodeMXBean {
     getOrCreateJournal(journalId).doPreUpgrade();
   }
 
-  @SuppressWarnings("objectconstruction:reset.not.owning") // it's not a JDK type (validated)
+  @SuppressWarnings("objectconstruction:reset.not.owning") // FP CreatesObligation should permit the call (checker bug): this error is issued at the call to doUpgrade() below with or without @CreatesObligation on this method(validated)
   public void doUpgrade(String journalId, StorageInfo sInfo) throws IOException {
     getOrCreateJournal(journalId).doUpgrade(sInfo);
   }
