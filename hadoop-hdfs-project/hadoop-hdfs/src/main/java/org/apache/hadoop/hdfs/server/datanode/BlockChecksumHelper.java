@@ -297,7 +297,7 @@ final class BlockChecksumHelper {
     }
 
     @Override
-    @SuppressWarnings("objectconstruction:contracts.postcondition.not.satisfied") // FP Depends on an inaccessible variable: getChecksumIn() and getMetadataIn() return this.checksumIn and this.metadataIn (validated)
+    @SuppressWarnings("objectconstruction:contracts.postcondition.not.satisfied") // FP depends on inaccessible variable: getChecksumIn() and getMetadataIn() return this.checksumIn and this.metadataIn (validated)
     @EnsuresCalledMethods(value = {"this.checksumIn", "this.metadataIn"}, methods = {"close"})
     void compute() throws IOException {
       try {
